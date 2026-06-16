@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>SuperMe · Be Super Be Me</title>
+<meta name="description" content="不是一个人的故事，是AI Native一代人的成长纪念。从一句「你还不是超级个体」到这件T恤。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+:root{--bg:#0f1117;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.08);--cyan:#60a5fa;--green:#4ade80;--amber:#fbbf24;--red:#f87171;--txt:rgba(255,255,255,.9);--txt2:rgba(255,255,255,.6);--txt3:rgba(255,255,255,.35)}
+body{background:#0f1117;color:var(--txt);font-family:-apple-system,"PingFang SC","Noto Sans CJK SC","Helvetica Neue",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--cyan);text-decoration:none}
+::selection{background:rgba(56,189,248,.25)}
+
+/* ====== HERO ====== */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px 20px 32px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 35%,rgba(96,165,250,.08),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 30% 80%,rgba(74,222,128,.05),transparent 60%);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.hero-text{max-width:480px}
+.hero-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--green);opacity:.8;margin-bottom:20px}
+.hero h1{font-size:clamp(40px,11vw,72px);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:16px;line-height:1.1}
+.hero .sub{font-size:clamp(15px,3.5vw,20px);color:rgba(255,255,255,.7);font-weight:400;margin-bottom:24px;max-width:440px;line-height:1.7}
+.hero .hook{font-size:clamp(13px,2.5vw,16px);color:#fcd34d;font-weight:500;margin-bottom:36px;line-height:1.8;max-width:400px}
+.hero .hero-cta{display:inline-block;padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--green));color:#001;font-size:15px;font-weight:700;letter-spacing:.5px;transition:.2s;cursor:pointer}
+.hero .hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(56,189,248,.3)}
+.hero-img{width:min(75%,360px);border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 120px rgba(56,189,248,.06);animation:hf 6s ease-in-out infinite}
+@keyframes hf{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(.5deg)}}
+.hero .scroll{position:absolute;bottom:28px;font-size:11px;letter-spacing:3px;color:var(--txt3);animation:sb 2.5s ease-in-out infinite}
+@keyframes sb{0%,100%{opacity:.15;transform:translateY(0)}50%{opacity:.5;transform:translateY(8px)}}
+
+/* ====== QUICK NAV ====== */
+.qnav{display:flex;justify-content:center;gap:6px;padding:12px 16px;flex-wrap:wrap;position:sticky;top:0;z-index:100;background:rgba(15,17,23,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+.qnav a{font-size:13px;font-weight:600;color:rgba(255,255,255,.6);padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:.2s;white-space:nowrap}
+.qnav a:hover{border-color:var(--cyan);color:#fff;background:rgba(56,189,248,.1)}
+.qnav a.nav-highlight{color:var(--amber);border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.08);font-weight:700}
+
+/* ====== SECTIONS ====== */
+.sec{padding:72px 24px;max-width:700px;margin:0 auto}
+.sec-full{padding:48px 0}
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);max-width:180px;margin:0 auto}
+
+/* ====== EMPATHY ====== */
+.emp{text-align:center;padding:80px 24px;position:relative}
+.emp::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(56,189,248,.04),transparent 70%);pointer-events:none}
+.emp h2{font-size:clamp(22px,6vw,36px);font-weight:800;color:#fff;line-height:1.4;margin-bottom:20px}
+.emp h2 em{font-style:normal;background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.emp p{color:var(--txt2);font-size:15px;max-width:460px;margin:0 auto;line-height:2.1}
+
+/* ====== CHAPTERS ====== */
+.ch{margin-bottom:52px;padding-left:22px;border-left:2px solid rgba(56,189,248,.08);transition:all .4s}
+.ch:hover{border-left-color:rgba(56,189,248,.4);padding-left:26px}
+.tag{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.12);padding:3px 12px;border-radius:12px;margin-bottom:10px}
+.ch h3{font-size:clamp(17px,4vw,21px);font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4}
+.ch p{color:var(--txt2);font-size:14px;line-height:1.9}
+
+/* ====== QUOTE ====== */
+.bq{text-align:center;padding:80px 24px;position:relative}
+.bq::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(251,191,36,.03),transparent 60%);pointer-events:none}
+.bq blockquote{font-size:clamp(15px,3.5vw,22px);font-weight:400;color:rgba(255,255,255,.75);line-height:1.8;max-width:540px;margin:0 auto 16px;letter-spacing:.3px}
+.bq .who{color:var(--txt3);font-size:13px}
+
+/* ====== AHA ====== */
+.aha{max-width:700px;margin:0 auto;padding:56px 24px}
+.aha h3{text-align:center;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.aha .asub{text-align:center;font-size:13px;color:var(--txt3);margin-bottom:28px;line-height:1.8}
+.aha-form{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.aha-form textarea{width:100%;padding:16px;border-radius:14px;border:1px solid rgba(251,191,36,.12);background:rgba(251,191,36,.02);color:#fff;font-size:14px;min-height:80px;outline:none;font-family:inherit;resize:vertical;transition:.2s}
+.aha-form textarea:focus{border-color:var(--amber);box-shadow:0 0 20px rgba(251,191,36,.08)}
+.aha-form .arow{display:flex;gap:8px}
+.aha-form .arow input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:#fff;font-size:13px;outline:none}
+.aha-form .arow button{padding:12px 22px;border-radius:10px;border:1px solid rgba(251,191,36,.25);background:rgba(251,191,36,.08);color:var(--amber);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s}
+.aha-form .arow button:hover{background:rgba(251,191,36,.15);transform:translateY(-1px)}
+.aha-list{display:flex;flex-direction:column;gap:14px}
+.aha-card{padding:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;transition:.2s}
+.aha-card:hover{border-color:rgba(251,191,36,.2)}
+.aha-card .at{font-size:14px;color:var(--txt2);line-height:1.9;margin-bottom:10px}
+.aha-card .at::before{content:'\201C';color:var(--amber);font-size:22px;font-weight:800;line-height:0;vertical-align:-4px;margin-right:2px}
+.aha-card .at::after{content:'\201D';color:var(--amber);font-size:22px;font-weight:800;line-height:0;vertical-align:-4px;margin-left:2px}
+.aha-card .am{font-size:11px;color:var(--txt3)}
+.aha-card .al{display:inline-block;font-size:11px;color:var(--amber);cursor:pointer;margin-left:10px;transition:.2s}
+.aha-card .al:hover{transform:scale(1.2)}
+
+/* ====== GALLERY ====== */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer;transition:.3s;filter:brightness(.88)}
+.gal img:hover{filter:brightness(1.1);transform:scale(1.03)}
+@media(max-width:640px){.gal{grid-template-columns:repeat(2,1fr)}}
+
+/* ====== PRODUCT DETAIL (Tmall style) ====== */
+.pdp{max-width:1000px;margin:0 auto;padding:48px 24px}
+.pdp-layout{display:flex;gap:32px;align-items:flex-start}
+.pdp-gallery{flex:1;min-width:0}
+.pdp-main-img{width:100%;border-radius:14px;aspect-ratio:1;object-fit:cover;cursor:pointer;margin-bottom:10px}
+.pdp-thumbs{display:flex;gap:6px;overflow-x:auto}
+.pdp-thumbs img{width:60px;height:60px;border-radius:8px;object-fit:cover;cursor:pointer;border:2px solid transparent;opacity:.6;transition:.2s}
+.pdp-thumbs img:hover,.pdp-thumbs img.active{opacity:1;border-color:var(--cyan)}
+.pdp-info{flex:1;min-width:280px}
+.pdp-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:6px}
+.pdp-subtitle{font-size:13px;color:var(--txt3);margin-bottom:16px}
+.pdp-reviews-badge{font-size:12px;color:var(--amber);margin-bottom:16px}
+.pdp-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.pdp-price{font-size:36px;font-weight:900;color:var(--green)}
+.pdp-price-old{font-size:16px;color:var(--txt3);text-decoration:line-through}
+.pdp-promo{display:inline-block;font-size:11px;color:#001;background:linear-gradient(90deg,var(--amber),#f59e0b);padding:3px 10px;border-radius:6px;font-weight:700;margin-bottom:16px}
+.pdp-meta{font-size:12px;color:var(--txt3);margin-bottom:20px;line-height:1.8}
+.pdp-section{margin-bottom:18px}
+.pdp-section-label{font-size:11px;color:var(--txt3);margin-bottom:8px;letter-spacing:1px}
+.pdp-buy-btn{display:block;width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--green));color:#001;letter-spacing:.5px;transition:.2s;margin-top:20px}
+.pdp-buy-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(56,189,248,.25)}
+@media(max-width:768px){.pdp-layout{flex-direction:column}.pdp-info{min-width:0}}
+
+/* ====== PILLS ====== */
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:36px 20px}
+.pill{font-size:12px;color:var(--txt2);background:var(--card);border:1px solid var(--line);border-radius:30px;padding:9px 18px;transition:.2s}
+.pill:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* ====== REVIEWS ====== */
+.rev{max-width:700px;margin:0 auto;padding:56px 24px}
+.rev h3{text-align:center;font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:24px}
+.rev-list{display:flex;flex-direction:column;gap:14px}
+.rev-card{padding:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;transition:.2s}
+.rev-card:hover{border-color:rgba(56,189,248,.2)}
+.rev-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rev-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--green));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#001;flex-shrink:0}
+.rev-name{font-size:14px;font-weight:600;color:var(--txt)}
+.rev-tag{font-size:10px;color:var(--amber);background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1);padding:2px 10px;border-radius:10px;margin-left:auto}
+.rev-text{font-size:13px;color:var(--txt2);line-height:1.9}
+.rev-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-top:8px}
+
+/* ====== VOTE ====== */
+.vote-sec{text-align:center;padding:40px 24px}
+.vote-sec .vq{font-size:13px;color:var(--txt3);margin-bottom:14px}
+.vrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:420px;margin:0 auto}
+.vt{padding:16px 8px;border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:.2s}
+.vt:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.vt.voted{border-color:var(--green);background:rgba(52,211,153,.04)}
+.vt .vn{font-size:22px;font-weight:800;color:var(--cyan);margin:6px 0 4px}
+.vt .vl{font-size:10px;color:var(--txt3)}
+@media(max-width:400px){.vrow{grid-template-columns:repeat(2,1fr)}}
+
+/* ====== PRICING ====== */
+.price-sec{text-align:center;padding:64px 24px;position:relative}
+.price-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:300px;background:radial-gradient(circle,rgba(52,211,153,.04),transparent 60%);pointer-events:none}
+.price-old{font-size:16px;color:var(--txt3);text-decoration:line-through}
+.price-now{font-size:clamp(48px,14vw,76px);font-weight:900;color:#fff;letter-spacing:-3px;margin:4px 0}
+.price-now span{font-size:20px;color:var(--txt3);font-weight:400;letter-spacing:0}
+.price-info{color:var(--txt3);font-size:13px;margin-top:4px}
+.price-badge{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:#001;background:linear-gradient(135deg,var(--amber),#f59e0b);padding:6px 18px;border-radius:20px;animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 12px rgba(251,191,36,.3)}50%{box-shadow:0 0 24px rgba(251,191,36,.5)}}
+
+/* ====== ORDER ====== */
+.order-wrap{max-width:960px;margin:0 auto;padding:0 24px 56px}
+.order-wrap h3{text-align:center;font-size:17px;font-weight:600;margin-bottom:24px;color:var(--txt)}
+.order-layout{display:flex;gap:24px;align-items:flex-start}
+.order-left{flex:1 1 55%;min-width:320px}
+.order-right{flex:0 0 340px;position:sticky;top:80px}
+.order-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+.order-card-title{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.order-summary{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.os-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:13px}
+.os-row .os-label{color:var(--txt2)}
+.os-row .os-value{color:var(--txt);font-weight:600}
+.os-row.os-total{border-top:1px solid var(--line);margin-top:8px;padding-top:14px}
+.os-row.os-total .os-value{font-size:22px;font-weight:900;color:var(--green)}
+.os-product{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:12px}
+.os-product img{width:56px;height:56px;border-radius:8px;object-fit:cover}
+.os-product-info{flex:1}
+.os-product-name{font-size:13px;font-weight:600;color:var(--txt)}
+.os-product-spec{font-size:11px;color:var(--txt3);margin-top:2px}
+@media(max-width:768px){.order-layout{flex-direction:column}.order-right{position:static;min-width:0;max-width:100%}}
+.fd{margin-bottom:16px}
+.fd label{display:block;font-size:10px;color:var(--txt3);margin-bottom:6px;letter-spacing:1.5px;text-transform:uppercase}
+.fd input,.fd select,.fd textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:#fff;font-size:14px;outline:none;font-family:inherit;transition:.2s}
+.fd input:focus,.fd select:focus,.fd textarea:focus{border-color:var(--cyan);box-shadow:0 0 16px rgba(56,189,248,.06)}
+.fd textarea{resize:vertical;min-height:60px}
+.szrow{display:flex;gap:7px;flex-wrap:wrap}
+.sz{flex:1;min-width:50px;padding:11px 0;text-align:center;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--txt2);cursor:pointer;font-size:14px;font-weight:600;transition:.2s}
+.sz:hover,.sz.on{border-color:var(--cyan);color:var(--cyan);background:rgba(56,189,248,.04)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cta{display:block;width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:700;cursor:pointer;margin-top:24px;background:linear-gradient(135deg,var(--cyan),var(--green));color:#001;letter-spacing:.5px;transition:.2s;position:relative;overflow:hidden}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(56,189,248,.25)}
+.cta::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);transition:none}
+.cta:hover::after{transform:translateX(100%);transition:transform .6s}
+
+/* ====== AI FILL ====== */
+.ai-fill{margin-bottom:24px;padding:18px;background:rgba(56,189,248,.03);border:1px solid rgba(56,189,248,.1);border-radius:14px}
+.ai-fill label{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--cyan);margin-bottom:8px;letter-spacing:1px}
+.ai-fill label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.4}50%{opacity:1}}
+.ai-fill textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(56,189,248,.15);background:rgba(56,189,248,.02);color:#fff;font-size:13px;min-height:56px;outline:none;font-family:inherit;resize:vertical}
+.ai-fill button{margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(56,189,248,.25);background:rgba(56,189,248,.06);color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;width:100%;transition:.2s}
+.ai-fill button:hover{background:rgba(56,189,248,.12)}
+
+/* ====== PAY ====== */
+.pay-box{margin-top:28px;padding:22px;background:var(--card);border:1px solid var(--line);border-radius:16px;text-align:center}
+.pay-title{font-size:14px;color:var(--txt2);margin-bottom:16px;font-weight:600}
+.pay-qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:300px;margin:0 auto}
+.pay-qr-item{text-align:center}
+.pay-qr-frame{background:#fff;border-radius:12px;padding:8px;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.pay-qr-frame img{width:100%;height:100%;object-fit:contain;border-radius:6px}
+.pay-label{font-size:11px;color:var(--txt3);margin-top:8px}
+.pay-note{font-size:10px;color:var(--txt3);margin-top:14px;line-height:1.7}
+
+/* ====== BULK ====== */
+.bulk{margin-top:20px;padding:18px;background:rgba(251,191,36,.03);border:1px solid rgba(251,191,36,.1);border-radius:14px;text-align:center}
+.bulk h4{font-size:14px;font-weight:600;color:var(--amber);margin-bottom:6px}
+.bulk p{font-size:12px;color:var(--txt3);margin-bottom:14px;line-height:1.7}
+.bulk-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.bulk-btns button,.bulk-btns label{padding:10px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s}
+.bulk-dl{border:1px solid rgba(251,191,36,.25);background:rgba(251,191,36,.06);color:var(--amber)}
+.bulk-up{border:1px solid rgba(56,189,248,.25);background:rgba(56,189,248,.06);color:var(--cyan)}
+
+/* ====== COMING ====== */
+.coming{max-width:700px;margin:0 auto;padding:40px 24px 56px}
+.coming h3{text-align:center;font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:24px}
+.coming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.coming-card{padding:20px 12px;background:var(--card);border:1px dashed var(--line);border-radius:14px;text-align:center;transition:.3s}
+.coming-card:hover{border-color:rgba(56,189,248,.25);border-style:solid;transform:translateY(-3px)}
+.coming-card .ci{font-size:30px;margin-bottom:10px}
+.coming-card h4{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px}
+.coming-card p{font-size:11px;color:var(--txt3)}
+@media(max-width:500px){.coming-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ====== WISH ====== */
+.wish{max-width:700px;margin:0 auto;padding:48px 24px}
+.wish h3{text-align:center;font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:6px}
+.wish .wsub{text-align:center;font-size:12px;color:var(--txt3);margin-bottom:20px}
+.wish-input{display:flex;gap:8px}
+.wish-input input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:#fff;font-size:14px;outline:none}
+.wish-input input:focus{border-color:var(--amber)}
+.wish-input button{padding:12px 20px;border-radius:10px;border:1px solid rgba(251,191,36,.25);background:rgba(251,191,36,.06);color:var(--amber);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s}
+.wish-input button:hover{background:rgba(251,191,36,.12)}
+.wish-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.wtag{font-size:12px;color:var(--txt2);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 14px;cursor:pointer;transition:.2s}
+.wtag:hover{border-color:var(--amber);color:var(--amber)}
+.wtag .wc{color:var(--amber);font-size:10px;margin-left:4px}
+
+/* ====== LIVE ORDERS ====== */
+.live{max-width:700px;margin:0 auto;padding:40px 24px}
+.live h3{text-align:center;font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:6px}
+.live .lsub{text-align:center;font-size:24px;font-weight:900;color:var(--green);margin-bottom:20px}
+.live .lsub span{font-size:13px;color:var(--txt3);font-weight:400}
+.live-list{max-height:280px;overflow:hidden;position:relative}
+.live-list::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.live-scroll{animation:scrollUp 20s linear infinite}
+@keyframes scrollUp{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.live-scroll:hover{animation-play-state:paused}
+.lo{display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;transition:.2s}
+.lo:hover{border-color:rgba(52,211,153,.2)}
+.lo-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--green));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#001;flex-shrink:0}
+.lo-info{flex:1;min-width:0}
+.lo-name{font-size:13px;font-weight:600;color:var(--txt)}
+.lo-detail{font-size:11px;color:var(--txt3)}
+.lo-reason{font-size:12px;color:var(--txt2);margin-top:4px;font-style:italic}
+.lo-time{font-size:10px;color:var(--txt3);white-space:nowrap}
+
+/* ====== CRAFT ====== */
+.craft{max-width:700px;margin:0 auto;padding:48px 24px}
+.craft h3{text-align:center;font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:24px}
+.craft-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.craft-card{padding:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;transition:.2s}
+.craft-card:hover{border-color:rgba(56,189,248,.2);transform:translateY(-2px)}
+.craft-card .cc-icon{font-size:24px;margin-bottom:10px}
+.craft-card h4{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:6px}
+.craft-card p{font-size:12px;color:var(--txt3);line-height:1.7}
+.vs-box{margin-top:24px;padding:18px;background:rgba(52,211,153,.03);border:1px solid rgba(52,211,153,.1);border-radius:14px;text-align:center}
+.vs-box .vs-title{font-size:13px;color:var(--green);font-weight:600;margin-bottom:12px}
+.vs-row{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+.vs-item{text-align:center}
+.vs-item .vs-brand{font-size:11px;color:var(--txt3);margin-bottom:4px}
+.vs-item .vs-price{font-size:20px;font-weight:800;color:var(--txt2)}
+.vs-item.ours .vs-price{color:var(--green)}
+.vs-divider{font-size:16px;color:var(--txt3)}
+
+/* ====== SIZE CHART ====== */
+.size-chart{max-width:700px;margin:0 auto;padding:48px 24px}
+.size-chart h3{text-align:center;font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:20px}
+.size-tbl{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px}
+.size-tbl th{padding:10px 8px;text-align:left;color:var(--cyan);font-weight:600;border-bottom:1px solid rgba(56,189,248,.15);font-size:11px;letter-spacing:.5px}
+.size-tbl td{padding:9px 8px;border-bottom:1px solid var(--line);color:var(--txt2)}
+.size-tbl tr:hover td{background:rgba(56,189,248,.03);color:var(--txt)}
+.size-tbl .hot{color:var(--amber);font-weight:600}
+.size-tbl .rec{font-size:10px;color:var(--txt3)}
+.size-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.size-bar .sbl{width:32px;font-size:11px;color:var(--txt3);text-align:right}
+.size-bar .sbr{height:14px;border-radius:4px;background:linear-gradient(90deg,var(--cyan),rgba(56,189,248,.4));transition:.3s}
+.size-bar .sbc{font-size:10px;color:var(--txt3);margin-left:4px}
+.size-tip{text-align:center;font-size:11px;color:var(--txt3);margin-top:12px}
+
+/* ====== CREATOR ====== */
+.creator{max-width:700px;margin:0 auto;padding:56px 24px;text-align:center}
+.creator h3{font-size:clamp(20px,5vw,28px);font-weight:800;color:#fff;margin-bottom:10px}
+.creator .csub{font-size:15px;color:var(--txt2);max-width:500px;margin:0 auto 28px;line-height:1.9}
+.creator-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.cs{padding:18px 10px;background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:center;transition:.2s}
+.cs:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.cs .csn{font-size:24px;font-weight:900;color:var(--cyan);margin-bottom:6px}
+.cs h4{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px}
+.cs p{font-size:11px;color:var(--txt3)}
+@media(max-width:600px){.creator-steps{grid-template-columns:1fr}}
+
+.cr-tabs{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid var(--line)}
+.cr-tab{flex:1;padding:12px;text-align:center;font-size:13px;font-weight:600;color:var(--txt3);cursor:pointer;transition:.2s;border-bottom:2px solid transparent}
+.cr-tab.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.cr-tab:hover{color:var(--txt2)}
+.cr-panel{display:none;padding:20px 0;text-align:left}
+.cr-panel.active{display:block}
+
+.prompt-box{margin-top:14px;padding:16px;background:rgba(56,189,248,.03);border:1px solid rgba(56,189,248,.12);border-radius:12px;position:relative}
+.prompt-box pre{font-size:12px;color:var(--txt2);white-space:pre-wrap;word-break:break-all;line-height:1.7;font-family:inherit;max-height:200px;overflow-y:auto}
+.prompt-box .copy-btn{position:absolute;top:10px;right:10px;padding:4px 12px;border-radius:6px;border:1px solid rgba(56,189,248,.2);background:rgba(56,189,248,.08);color:var(--cyan);font-size:11px;font-weight:600;cursor:pointer}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px}
+.gallery-card{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);transition:.3s;background:var(--card)}
+.gallery-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.gallery-card img{width:100%;aspect-ratio:1;object-fit:cover}
+.gallery-card .gc-info{padding:12px 14px}
+.gallery-card .gc-name{font-size:14px;color:var(--txt);font-weight:600;margin-bottom:4px}
+.gallery-card .gc-designer{font-size:11px;color:var(--txt3);margin-bottom:10px}
+.gc-progress{margin-bottom:8px}
+.gc-progress-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.gc-progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--green));transition:.3s}
+.gc-progress-text{display:flex;justify-content:space-between;font-size:10px;color:var(--txt3);margin-top:4px}
+.gc-actions{display:flex;gap:8px}
+.gc-vote-btn{flex:1;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:12px;cursor:pointer;transition:.2s;text-align:center}
+.gc-vote-btn:hover{border-color:var(--amber);color:var(--amber)}
+.gc-vote-btn.voted{border-color:var(--green);color:var(--green);background:rgba(52,211,153,.06)}
+.gc-preorder-btn{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(56,189,248,.2);background:rgba(56,189,248,.06);color:var(--cyan);font-size:12px;cursor:pointer;transition:.2s;text-align:center;font-weight:600}
+.gc-preorder-btn:hover{background:rgba(56,189,248,.12)}
+.gc-status{display:inline-block;font-size:10px;padding:2px 8px;border-radius:8px;margin-bottom:8px}
+.gc-status.crowding{color:var(--amber);background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.12)}
+.gc-status.success{color:var(--green);background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.12)}
+@media(max-width:500px){.gallery-grid{grid-template-columns:1fr 1fr}}
+
+/* ====== FABRIC ====== */
+.fabric-options{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0}
+.fab{padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:.2s;position:relative}
+.fab:hover{border-color:var(--cyan)}
+.fab.fab-on{border-color:var(--green);background:rgba(52,211,153,.04)}
+.fab-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.fab-radio{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;transition:.2s}
+.fab.fab-on .fab-radio{border-color:var(--green);background:var(--green)}
+.fab-name{font-size:14px;font-weight:600;color:var(--txt)}
+.fab-price{margin-left:auto;font-size:14px;font-weight:700;color:var(--cyan)}
+.fab-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.fab-tag{font-size:10px;padding:2px 8px;border-radius:8px}
+.fab-tag.eco{color:var(--green);background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.1)}
+.fab-tag.premium{color:var(--amber);background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.1)}
+.fab-tag.hot{color:var(--red);background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.1)}
+.fab-desc{font-size:11px;color:var(--txt3);line-height:1.7}
+
+/* ====== WHY BUY ====== */
+.why-opt{padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:12px;cursor:pointer;transition:.2s;text-align:center}
+.why-opt:hover{border-color:var(--amber);color:var(--amber)}
+.why-opt.picked{border-color:var(--green);background:rgba(52,211,153,.06);color:var(--green)}
+
+/* ====== FOOTER ====== */
+.footer{text-align:center;padding:40px 20px;color:var(--txt3);font-size:10px;letter-spacing:.5px}
+.footer .fc{color:var(--txt2);font-size:11px;margin-bottom:6px}
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:999;justify-content:center;align-items:center;cursor:pointer;backdrop-filter:blur(8px)}
+.lb.show{display:flex}
+.lb img{max-width:92%;max-height:90%;border-radius:10px;box-shadow:0 16px 64px rgba(0,0,0,.5)}
+
+/* ====== RESPONSIVE ====== */
+@media(min-width:900px){
+  .sec{max-width:740px}
+  .hero{flex-direction:row;gap:56px;padding:60px 80px;text-align:left;align-items:center}
+  .hero-text{text-align:left}
+  .hero-img{width:400px;flex-shrink:0}
+  .hero .scroll{left:50%;transform:translateX(-50%)}
+  .gal{max-width:960px;margin:0 auto}
+  .order-wrap{max-width:480px}
+  .coming-grid{grid-template-columns:repeat(3,1fr)}
+  .ch{margin-bottom:56px}
+  .emp h2{font-size:38px}
+  .ch h3{font-size:21px}
+  .bq blockquote{font-size:24px}
+  .craft-grid{grid-template-columns:repeat(4,1fr)}
+  .rev-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .aha-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+}
+@media(min-width:1200px){
+  .hero{padding:80px 100px;gap:80px}
+  .hero-img{width:460px}
+  .hero h1{font-size:76px}
+  .emp h2{font-size:42px}
+  .ch h3{font-size:22px}
+  .bq blockquote{font-size:26px}
+  .gal{max-width:1100px}
+  .sec{max-width:800px}
+}
+
+
+
+/* ====== CHECKOUT MODAL ====== */
+.checkout-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);overflow-y:auto;padding:20px}
+.checkout-overlay.show{display:flex;justify-content:center;align-items:flex-start}
+.checkout-modal{background:#151921;border:1px solid rgba(255,255,255,.08);border-radius:20px;width:100%;max-width:480px;margin:40px auto;padding:28px 24px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.checkout-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--txt2);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.checkout-close:hover{border-color:var(--cyan);color:#fff}
+.checkout-title{font-size:18px;font-weight:700;color:#fff;text-align:center;margin-bottom:20px}
+.checkout-product{display:flex;gap:14px;align-items:center;padding:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;margin-bottom:20px}
+.checkout-product img{width:64px;height:64px;border-radius:10px;object-fit:cover}
+.checkout-product-info h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.checkout-product-info p{font-size:12px;color:var(--txt3)}
+.checkout-product-price{margin-left:auto;font-size:20px;font-weight:800;color:var(--green)}
+.checkout-step{display:none}
+.checkout-step.active{display:block}
+.checkout-steps-bar{display:flex;gap:4px;margin-bottom:20px}
+.checkout-step-dot{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.08)}
+.checkout-step-dot.done{background:var(--green)}
+.checkout-step-dot.current{background:var(--cyan)}
+.checkout-nav{display:flex;gap:10px;margin-top:20px}
+.checkout-nav .btn-back{flex:1;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:15px;font-weight:600;cursor:pointer;text-align:center}
+.checkout-nav .btn-next{flex:2;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--cyan),var(--green));color:#001;font-size:15px;font-weight:700;cursor:pointer;text-align:center;transition:.2s}
+.checkout-nav .btn-next:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(96,165,250,.25)}
+
+
+/* ====== ORDER QUERY ====== */
+.query-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);overflow-y:auto;padding:20px}
+.query-overlay.show{display:flex;justify-content:center;align-items:flex-start}
+.query-modal{background:#151921;border:1px solid rgba(255,255,255,.08);border-radius:20px;width:100%;max-width:420px;margin:60px auto;padding:28px 24px;position:relative}
+
+</style>
+</head>
+<body>
+
+<!-- ====== HERO (Awareness: 3秒抓住注意力) ====== -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">SuperMe &middot; AI Native &middot; 2026</div>
+    <h1>Be Super<br>Be Me</h1>
+    <p class="sub">不是一个人的故事<br>是AI Native一代人的成长纪念</p>
+    <p class="hook">&ldquo;你还不是超级个体&rdquo;&mdash;&mdash;有人这样对布斯说。<br>三个月后，他用AI做出了这件T恤。</p>
+    <a class="hero-cta" href="#story">听这个故事 &darr;</a>
+  </div>
+  <img class="hero-img" src="images/design.jpg" alt="SuperMe T恤">
+  <div class="scroll">&darr; 向下滑动</div>
+</div>
+
+<!-- ====== QUICK NAV (用户分层快速入口) ====== -->
+<nav class="qnav">
+  <a href="#story">故事</a>
+  <a href="#product">产品</a>
+  <a href="#size">尺码</a>
+  <a href="#creator" class="nav-highlight">我要设计</a>
+  <a href="#" onclick="openOrderQuery();return false">查订单</a>
+  <a href="#community">共创</a>
+</nav>
+
+<!-- ====== EMPATHY (Awareness → Interest: 制造共鸣) ====== -->
+<div class="emp">
+  <h2>&ldquo;<em>你还不是超级个体。</em>&rdquo;</h2>
+  <p>有人这样对布斯说。<br>他是一个运营，不会写代码。<br>那一天他没有反驳，只是记住了这句话。<br>然后花了三个月，用AI给出了自己的回答。</p>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== STORY (Interest: 深度种草) ====== -->
+<div class="sec" id="story">
+  <div class="ch"><div class="tag">起点</div><h3>&ldquo;布斯，你还不是超级个体。&rdquo;</h3><p>在阿里健康BU做完第一次AI分享后，姚宝给了这个评价。什么才算超级个体？绩效高？赚到钱了？他一时没有答案。</p></div>
+  <div class="ch"><div class="tag">顿悟</div><h3>比昨天多赚一分钱，你就是超级个体</h3><p>QoderWork线下开放麦上，法桐老师说：&ldquo;你对比的坐标系，是昨天的你自己。&rdquo;超级个体不是和别人比，是和自己比。Be Super Be Me，就是从这里来的。</p></div>
+  <div class="ch"><div class="tag">学</div><h3>从豆包到赛场车手</h3><p>不会代码也能学AI。从对话开始，一步步解锁生图、做PPT、声音克隆。然后QoderWork、Qoder、Claude Code、Codex&mdash;&mdash;从考驾照走到赛场车手。</p></div>
+  <div class="ch"><div class="tag">用</div><h3>从等排期到自己搞定</h3><p>群聊自动分析、智能答疑、自动周报。8小时零代码搭了社群官网。800+人的SuperMe社群不是规划出来的，是走着走着就到了一起。</p></div>
+  <div class="ch"><div class="tag">教</div><h3>走进社区，走上讲台</h3><p>给小朋友做AI启蒙，给60岁奶奶教用AI拍牙看病。5场公益活动后，走出阿里，在良仓给企业家做了首次对外分享。</p></div>
+  <div class="ch"><div class="tag">决心</div><h3>别人的T恤AI含量不够高</h3><p>想验证超级个体能不能变现。不卖课、不卷认知。那就做一件社群文化T恤。不卖焦虑，卖认同。</p></div>
+  <div class="ch"><div class="tag">共创</div><h3>AI读了800人的聊天记录</h3><p>让Devix分析社群风格，生成设计prompt。用画眉打样十几稿，发到群里投票。不是一个人的审美，是800+人共创的结果。</p></div>
+  <div class="ch"><div class="tag">踩坑</div><h3>AI搞得定设计，搞不定供应链</h3><p>1688找不到、闲鱼也不行。最后靠朋友冬生&mdash;&mdash;他之前做史努比童装，东莞工厂一个电话接单。关键时刻靠的是身边的人。</p></div>
+  <div class="ch"><div class="tag">亮相</div><h3>穿上它站在台上</h3><p>6月10日，良仓。穿着这件T恤站在台上的那一刻，从&ldquo;你还不是超级个体&rdquo;到&ldquo;Be Super Be Me&rdquo;&mdash;&mdash;每一步都穿在了身上。</p></div>
+</div>
+
+<!-- ====== QUOTE ====== -->
+<div class="bq">
+  <blockquote>&ldquo;这件T恤不是一个人做出来的。<br>是从800+人的聊天记录里长出来的设计，<br>是朋友一个电话搞定的供应链，<br>是社群投票选出来的款式。<br><br>每一步都有人陪着走。<br>这才是超级个体的真正含义。&rdquo;</blockquote>
+  <div class="who">&mdash; 布斯</div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== AHA MOMENT (Interest → Purchase: 情感共振) ====== -->
+<div class="aha">
+  <h3>你的 Aha Moment 是什么？</h3>
+  <div class="asub">每个人都有那么一个瞬间，突然意识到AI改变了什么。<br>留下你的故事，成为这面墙的一部分。</div>
+  <div class="aha-form">
+    <textarea id="aha-text" placeholder="那个让你震撼的AI瞬间..."></textarea>
+    <div class="arow">
+      <input type="text" id="aha-name" placeholder="你的名字 / 花名">
+      <button onclick="addAha()">分享故事</button>
+    </div>
+  </div>
+  <div class="aha-list" id="aha-list"></div>
+</div>
+
+<!-- ====== PRODUCT DETAIL (Tmall style) ====== -->
+<div class="pdp" id="product">
+  <div class="pdp-layout">
+    <div class="pdp-gallery">
+      <img class="pdp-main-img" id="pdp-main" src="images/design.jpg" alt="SuperMe T恤" onclick="sl(this)">
+      <div class="pdp-thumbs">
+        <img src="images/design.jpg" class="active" onclick="pdpThumb(this)">
+        <img src="images/model.jpg" onclick="pdpThumb(this)">
+        <img src="images/logo-detail.jpg" onclick="pdpThumb(this)">
+        <img src="images/collar.jpg" onclick="pdpThumb(this)">
+        <img src="images/sprout.jpg" onclick="pdpThumb(this)">
+        <img src="images/flatlay.jpg" onclick="pdpThumb(this)">
+        <img src="images/package.jpg" onclick="pdpThumb(this)">
+        <img src="images/packaging.jpg" onclick="pdpThumb(this)">
+      </div>
+    </div>
+    <div class="pdp-info">
+      <div class="pdp-title">SuperMe T恤 · Be Super Be Me</div>
+      <div class="pdp-subtitle">AI Native时代的第一件实体产品 · 800+人共创</div>
+      <div class="pdp-reviews-badge">★★★★★ 45件已预订 · 穿过的人都说值</div>
+      <div class="pdp-price-row">
+        <div class="pdp-price">¥69</div>
+        <div class="pdp-price-old">¥89</div>
+      </div>
+      <div class="pdp-promo">限时预售 立减20元</div>
+      <div class="pdp-meta">
+        48小时内确认 · 1-2周发货 · 东莞工厂直发<br>
+        四种工艺（刺绣+印字+刺绣+织标）· 非印花<br>
+        98%棉+2%氨纶 · 260g中厚 · 宽松版型 · 男女通用
+      </div>
+      <div class="pdp-section">
+        <div class="pdp-section-label">尺码</div>
+        <div class="szrow">
+          <div class="sz" onclick="ps(this)">M</div>
+          <div class="sz" onclick="ps(this)">L</div>
+          <div class="sz on" onclick="ps(this)">XL</div>
+          <div class="sz" onclick="ps(this)">2XL</div>
+          <div class="sz" onclick="ps(this)">3XL</div>
+          <div class="sz" onclick="ps(this)">4XL</div>
+        </div>
+        <div style="font-size:10px;color:var(--txt3);margin-top:6px">XL+2XL占56%为主力尺码 · 宽松版型建议正常码</div>
+      </div>
+      <div class="pdp-section">
+        <div class="pdp-section-label">颜色</div>
+        <div class="szrow">
+          <div class="sz on" onclick="ps(this)" style="min-width:80px">经典白</div>
+          <div class="sz" onclick="ps(this)" style="min-width:80px;opacity:.4">极简黑(即将)</div>
+        </div>
+      </div>
+      <div class="pdp-section">
+        <div class="pdp-section-label">数量</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden">
+            <button onclick="pdpQty(-1)" style="width:36px;height:36px;border:none;background:var(--card);color:var(--txt);font-size:18px;cursor:pointer">-</button>
+            <input type="number" id="pdp-qty" value="1" min="1" max="10" style="width:48px;height:36px;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);background:transparent;color:#fff;text-align:center;font-size:15px;font-weight:600;outline:none;-moz-appearance:textfield" oninput="pdpQtyUpdate()">
+            <button onclick="pdpQty(1)" style="width:36px;height:36px;border:none;background:var(--card);color:var(--txt);font-size:18px;cursor:pointer">+</button>
+          </div>
+          <span style="font-size:13px;color:var(--txt3)">小计：<span id="pdp-subtotal" style="color:var(--green);font-weight:700;font-size:16px">¥69</span></span>
+        </div>
+      </div>
+      <button class="pdp-buy-btn" onclick="openCheckout()">立即预订 <span id="pdp-buy-price">¥69</span></button>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <div class="pill" style="flex:1;text-align:center;font-size:11px">🌱 嫩芽刺绣</div>
+        <div class="pill" style="flex:1;text-align:center;font-size:11px">💬 Be Super Be Me</div>
+        <div class="pill" style="flex:1;text-align:center;font-size:11px">📖 AI运营生存指南</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== REVIEWS (Interest → Purchase: 社会证明) ====== -->
+<div class="rev">
+  <h3>穿过的人说</h3>
+  <div class="rev-list">
+    <div class="rev-card">
+      <div class="rev-top"><div class="rev-avatar">写</div><div class="rev-name">写轮</div><div class="rev-tag">圆桌会嘉宾</div></div>
+      <div class="rev-text">穿着这件T恤录完了90分钟的圆桌会。领口那句Be Super Be Me，只有穿的人自己知道。面料比我预期好很多，刺绣细节到位。</div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-top"><div class="rev-avatar">冬</div><div class="rev-name">冬生</div><div class="rev-tag">供应链合伙人</div></div>
+      <div class="rev-text">从淘宝童装到AI社群T恤，没想到多年后又因为一件衣服和布斯连上了。工厂老板看到设计稿说这个有意思，主动降了价。</div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-top"><div class="rev-avatar">群</div><div class="rev-name">社群成员</div><div class="rev-tag">首批预订</div></div>
+      <div class="rev-text">看完故事直接下单了。说实话69块买的不是T恤，买的是这个故事。穿着它上班，同事问这是啥，我说这是AI做的。</div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--txt3);font-size:11px;margin-top:18px">更多评价持续更新中 · 欢迎穿后晒图反馈</p>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== LIVE ORDERS (Purchase: 从众效应) ====== -->
+<div class="live">
+  <h3>已有人预订</h3>
+  <div class="lsub">45 <span>件已预订</span></div>
+  <div class="live-list">
+    <div class="live-scroll" id="live-scroll">
+      <div class="lo"><div class="lo-avatar">写</div><div class="lo-info"><div class="lo-name">写*</div><div class="lo-detail">XL · 经典白 · 1件</div><div class="lo-reason">"圆桌会嘉宾纪念，穿着它录了90分钟"</div></div><div class="lo-time">6/10</div></div>
+      <div class="lo"><div class="lo-avatar">冬</div><div class="lo-info"><div class="lo-name">冬*</div><div class="lo-detail">L · 经典白 · 2件</div><div class="lo-reason">"帮布斯做供应链的兄弟，必须支持"</div></div><div class="lo-time">6/9</div></div>
+      <div class="lo"><div class="lo-avatar">L</div><div class="lo-info"><div class="lo-name">L***a</div><div class="lo-detail">2XL · 经典白 · 1件</div><div class="lo-reason">"群里最早一批人，见证了从0到1"</div></div><div class="lo-time">6/11</div></div>
+      <div class="lo"><div class="lo-avatar">陆</div><div class="lo-info"><div class="lo-name">陆*</div><div class="lo-detail">XL · 经典白 · 1件</div><div class="lo-reason">"69块买个AI时代的纪念品，值"</div></div><div class="lo-time">6/11</div></div>
+      <div class="lo"><div class="lo-avatar">楠</div><div class="lo-info"><div class="lo-name">楠*</div><div class="lo-detail">2XL · 经典白 · 1件</div><div class="lo-reason">"看完故事直接下单，不犹豫"</div></div><div class="lo-time">6/11</div></div>
+      <div class="lo"><div class="lo-avatar">张</div><div class="lo-info"><div class="lo-name">张*</div><div class="lo-detail">XL · 经典白 · 3件</div><div class="lo-reason">"给团队买的，大家一人一件"</div></div><div class="lo-time">6/12</div></div>
+      <div class="lo"><div class="lo-avatar">雪</div><div class="lo-info"><div class="lo-name">雪*</div><div class="lo-detail">L · 经典白 · 1件</div><div class="lo-reason">"SuperMe第一批周边，必须收藏"</div></div><div class="lo-time">6/12</div></div>
+      <div class="lo"><div class="lo-avatar">不</div><div class="lo-info"><div class="lo-name">不*</div><div class="lo-detail">2XL · 经典白 · 1件</div><div class="lo-reason">"AI含量最高的T恤，没有之一"</div></div><div class="lo-time">6/12</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== CRAFT (Interest → Purchase: 产品力说服) ====== -->
+<div class="craft">
+  <h3>做一件值得穿的T恤</h3>
+  <div class="craft-grid">
+    <div class="craft-card">
+      <div class="cc-icon">🧵</div>
+      <h4>四种工艺</h4>
+      <p>胸口刺绣 · 领口印字 · 领后刺绣 · 袖口织标。不是印花贴图，每一处都是独立工艺。</p>
+    </div>
+    <div class="craft-card">
+      <div class="cc-icon">🌿</div>
+      <h4>高端面料</h4>
+      <p>98%棉+2%氨纶。吸汗透气又有弹性，不是硬邦邦的广告衫面料。穿上就知道区别。</p>
+    </div>
+    <div class="craft-card">
+      <div class="cc-icon">✂️</div>
+      <h4>宽松版型</h4>
+      <p>落肩设计，男女通用。不贴身、不紧绷，日常穿搭或运动都合适。</p>
+    </div>
+    <div class="craft-card">
+      <div class="cc-icon">📦</div>
+      <h4>独立包装</h4>
+      <p>每一件单独密封包装。拆开就是新的，送人也体面。</p>
+    </div>
+  </div>
+  <div class="vs-box">
+    <div class="vs-title">同等品质对比</div>
+    <div class="vs-row">
+      <div class="vs-item"><div class="vs-brand">优衣库基础款</div><div class="vs-price">¥99</div></div>
+      <div class="vs-divider">|</div>
+      <div class="vs-item"><div class="vs-brand">优衣库联名款</div><div class="vs-price">¥149-199</div></div>
+      <div class="vs-divider">|</div>
+      <div class="vs-item ours"><div class="vs-brand">SuperMe 预售价</div><div class="vs-price">¥69</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--txt3);margin-top:10px">4种工艺+高端面料，价格不到优衣库基础款</p>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== VOTE ====== -->
+<div class="vote-sec">
+  <div class="vq">下一款你想要什么颜色？</div>
+  <div class="vrow">
+    <div class="vt" onclick="vt(this,'white')"><div>🤍</div><div class="vn" id="v-white">128</div><div class="vl">经典白</div></div>
+    <div class="vt" onclick="vt(this,'black')"><div>🖤</div><div class="vn" id="v-black">96</div><div class="vl">极简黑</div></div>
+    <div class="vt" onclick="vt(this,'orange')"><div>🧡</div><div class="vn" id="v-orange">73</div><div class="vl">阿里橙</div></div>
+    <div class="vt" onclick="vt(this,'green')"><div>💚</div><div class="vn" id="v-green">45</div><div class="vl">科技绿</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== PACKAGING (开箱体验) ====== -->
+<div style="max-width:700px;margin:0 auto;padding:48px 24px;text-align:center">
+  <h3 style="font-size:17px;font-weight:600;color:var(--txt2);margin-bottom:8px">开箱体验</h3>
+  <p style="font-size:13px;color:var(--txt3);margin-bottom:20px">不只是一件T恤，是一份AI时代的成长纪念</p>
+  <img src="images/packaging.jpg" alt="SuperMe包装设计" style="width:100%;max-width:600px;margin:0 auto;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.4)">
+  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px">
+    <div class="pill">📦 牛皮纸飞机盒</div>
+    <div class="pill">🌿 拷贝纸暗纹包裹</div>
+    <div class="pill">💌 感谢卡+故事二维码</div>
+    <div class="pill">🏷️ 限量编号腰封</div>
+    <div class="pill">🔵 SuperMe品牌贴纸</div>
+  </div>
+  <p style="font-size:12px;color:var(--amber);margin-top:14px;font-weight:600">未来计划 · 包装设计效果图<br><span style="color:var(--txt3);font-weight:400;font-size:11px">当前发货为T恤+透明袋包装 · 升级包装开发中</span></p>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== SIZE CHART (Interest → Purchase 过渡) ====== -->
+<div class="size-chart" id="size">
+  <h3>尺码参考</h3>
+  <table class="size-tbl">
+    <thead><tr><th>尺码</th><th>身高</th><th>体重</th><th>胸围</th><th>建议</th></tr></thead>
+    <tbody>
+      <tr><td>M</td><td>165-170</td><td>55-65kg</td><td>104cm</td><td class="rec">偏瘦女生</td></tr>
+      <tr><td>L</td><td>170-175</td><td>60-70kg</td><td>108cm</td><td class="rec">标准/偏瘦</td></tr>
+      <tr><td class="hot">XL</td><td>175-180</td><td>70-80kg</td><td>114cm</td><td class="rec hot">主力尺码</td></tr>
+      <tr><td class="hot">2XL</td><td>178-183</td><td>80-90kg</td><td>120cm</td><td class="rec hot">主力尺码</td></tr>
+      <tr><td>3XL</td><td>180-188</td><td>90-100kg</td><td>126cm</td><td class="rec">偏壮</td></tr>
+      <tr><td>4XL</td><td>185-190</td><td>100-110kg</td><td>132cm</td><td class="rec">预留大码</td></tr>
+    </tbody>
+  </table>
+  <div class="size-tip">XL+2XL占56%为主力尺码 · 宽松版型 · 男女通用</div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== PRICING (Purchase) ====== -->
+
+<!-- ====== COMING SOON (Loyalty: 持续关注) ====== -->
+<div class="coming">
+  <h3>即将上线</h3>
+  <div class="coming-grid">
+    <div class="coming-card"><div class="ci">👕</div><h4>极简黑T恤</h4><p>同款设计 · 黑色版</p></div>
+    <div class="coming-card"><div class="ci">📱</div><h4>AI手机壳</h4><p>Be Super Be Me</p></div>
+    <div class="coming-card"><div class="ci">🔋</div><h4>定制充电宝</h4><p>SuperMe能量站</p></div>
+    <div class="coming-card"><div class="ci">🧸</div><h4>AI玩偶</h4><p>布大爷数字分身</p></div>
+    <div class="coming-card"><div class="ci">🧢</div><h4>棒球帽</h4><p>嫩芽刺绣款</p></div>
+    <div class="coming-card"><div class="ci">🎒</div><h4>帆布袋</h4><p>AI运营生存指南</p></div>
+  </div>
+</div>
+
+<!-- ====== WISH WALL (Loyalty: 共创复购) ====== -->
+<div class="wish" id="community">
+  <h3>你还想要什么周边？</h3>
+  <div class="wsub">留下你的想法，票数最高的优先开发</div>
+  <div class="wish-input">
+    <input type="text" id="wish-text" placeholder="我想要一个...">
+    <button onclick="addWish()">许愿</button>
+  </div>
+  <div class="wish-tags" id="wish-tags"></div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== CREATOR PLATFORM (Loyalty → Growth: 人人创业) ====== -->
+<div class="creator" id="creator">
+  <h3>做一件属于你自己的T恤</h3>
+  <p class="csub">用AI设计 → 上传展示 → 大家投票 → 定制生产</p>
+
+  <div class="creator-steps">
+    <div class="cs"><div class="csn">01</div><h4>描述想法</h4><p>告诉我你想要什么风格，AI帮你生成设计提示词</p></div>
+    <div class="cs"><div class="csn">02</div><h4>生图上传</h4><p>拿提示词去Midjourney/DALL-E生图，回来上传</p></div>
+    <div class="cs"><div class="csn">03</div><h4>投票生产</h4><p>大家投票，票数最高的优先定制生产</p></div>
+  </div>
+
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden">
+    <div class="cr-tabs">
+      <div class="cr-tab active" onclick="crTab(0)">① 生成提示词</div>
+      <div class="cr-tab" onclick="crTab(1)">② 上传设计</div>
+      <div class="cr-tab" onclick="crTab(2)">③ 设计展示</div>
+    </div>
+
+    <div style="padding:20px">
+      <!-- Tab 1: Generate Prompt -->
+      <div class="cr-panel active" id="crp-0">
+        <div class="fd"><label>你的设计主题</label><input type="text" id="design-theme" placeholder="比如：AI时代程序员、运营人日常、社群纪念、赛博朋克..."></div>
+        <div class="fd"><label>想要的风格</label>
+          <select id="design-style">
+            <option>极简文字款（类似Supreme）</option>
+            <option>插画图案款（背面大图）</option>
+            <option>代码/技术款（代码片段）</option>
+            <option>口号标语款（一句话）</option>
+            <option>抽象艺术款（几何/渐变）</option>
+          </select>
+        </div>
+        <div class="fd"><label>想要的颜色</label>
+          <select id="design-color">
+            <option>白色底</option>
+            <option>黑色底</option>
+            <option>灰色底</option>
+            <option>都可以</option>
+          </select>
+        </div>
+        <div class="fd"><label>补充描述（选填）</label><input type="text" id="design-extra" placeholder="任何特殊要求..."></div>
+        <button class="cta" onclick="genPrompt()">生成设计提示词</button>
+        <div id="prompt-result"></div>
+      </div>
+
+      <!-- Tab 2: Upload Design -->
+      <div class="cr-panel" id="crp-1">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">用提示词在Midjourney/DALL-E/豆包生成图片后，上传到这里展示：</p>
+        <div class="fd"><label>设计师名字</label><input type="text" id="up-name" placeholder="你的花名"></div>
+        <div class="fd"><label>设计名称</label><input type="text" id="up-title" placeholder="给你的设计起个名字"></div>
+        <div class="fd"><label>上传设计图</label>
+          <div style="border:2px dashed var(--line);border-radius:12px;padding:30px;text-align:center;cursor:pointer" onclick="document.getElementById('up-file').click()">
+            <div id="up-preview" style="margin-bottom:10px"></div>
+            <p style="color:var(--txt3);font-size:13px">点击上传T恤正面设计图</p>
+            <p style="color:var(--txt3);font-size:11px">支持 JPG/PNG，建议正方形</p>
+            <input type="file" id="up-file" accept="image/*" onchange="previewUpload(this)" style="display:none">
+          </div>
+        </div>
+        <button class="cta" onclick="submitDesign()">提交设计</button>
+        <div id="up-result"></div>
+      </div>
+
+      <!-- Tab 3: Gallery -->
+      <div class="cr-panel" id="crp-2">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">大家的设计 · 点击投票，票数最高的优先生产</p>
+        <div class="gallery-grid" id="design-gallery"></div>
+        <p style="text-align:center;color:var(--txt3);font-size:11px;margin-top:14px">更多设计持续征集中</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ====== FOOTER ====== -->
+<div class="footer">
+  <div class="fc">Be Super Be Me · 超越的对象，永远是昨天的自己</div>
+  SuperMe &middot; AI运营生存指南 &middot; 布斯 &times; 布大爷 &middot; 2026
+</div>
+
+<!-- ====== LIGHTBOX ====== -->
+<div class="lb" id="lb" onclick="this.classList.remove('show')"><img id="lbi"></div>
+
+<script>
+function sl(e){document.getElementById('lbi').src=e.src;document.getElementById('lb').classList.add('show')}
+function pdpThumb(el){document.getElementById('pdp-main').src=el.src;document.querySelectorAll('.pdp-thumbs img').forEach(function(i){i.classList.remove('active')});el.classList.add('active')}
+function ps(e){document.querySelectorAll('.sz').forEach(s=>s.classList.remove('on'));e.classList.add('on');var osSize=document.getElementById('os-size');if(osSize)osSize.textContent=e.textContent}
+function vt(c,k){if(c.classList.contains('voted'))return;document.querySelectorAll('.vt').forEach(v=>v.classList.remove('voted'));c.classList.add('voted');var e=document.getElementById('v-'+k);e.textContent=+e.textContent+1;localStorage.setItem('sv',k)}
+
+window._selectedFab='standard';
+function pickFab(el,type){window._selectedFab=type;document.querySelectorAll('.fab').forEach(function(f){f.classList.remove('fab-on')});el.classList.add('fab-on')}
+
+function aiParse(){
+var t=document.getElementById('ai-input').value.trim();if(!t){alert('请粘贴收货信息');return}
+var phone=t.match(/1[3-9]\d{9}/);if(phone){document.getElementById('phone').value=phone[0];t=t.replace(phone[0],'')}
+var sizeMap={'s':'S','m':'M','l':'L','xl':'XL','2xl':'2XL','3xl':'3XL'};
+var sizeMatch=t.match(/\b(3xl|2xl|xl|l|m|s)\b/i)||t.match(/(3XL|2XL|XL|L|M|S)码/);
+if(sizeMatch){var sz=sizeMap[sizeMatch[1].toLowerCase()]||sizeMatch[1].toUpperCase();document.querySelectorAll('.sz').forEach(function(b){b.classList.toggle('on',b.textContent===sz)})}
+var colorMatch=t.match(/(白|黑)/);if(colorMatch){document.getElementById('color').selectedIndex=colorMatch[1]==='黑'?1:0}
+var qtyMatch=t.match(/(\d+)\s*件/);if(qtyMatch){document.getElementById('qty').value=qtyMatch[1]}
+var provinces=['河北','山西','辽宁','吉林','黑龙江','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','海南','四川','贵州','云南','陕西','甘肃','青海','台湾','内蒙古','广西','西藏','宁夏','新疆','香港','澳门'];
+var zhixia=['北京','天津','上海','重庆'];
+var provMatch=null,isZhixia=false;
+zhixia.forEach(function(z){if(t.indexOf(z)!==-1){provMatch=z;isZhixia=true}});
+if(!provMatch)provinces.forEach(function(p){if(t.indexOf(p)!==-1)provMatch=p});
+if(provMatch){
+var addrStart=t.indexOf(provMatch);
+var addrText=t.substring(addrStart);
+// Remove phone from addrText
+addrText=addrText.replace(/1[3-9]\d{9}/g,'').trim();
+if(isZhixia){
+  document.getElementById('province').value=provMatch+'市';
+  document.getElementById('city').value=provMatch+'市';
+  var afterCity=addrText.replace(new RegExp('^'+provMatch+'市?'),'');
+  var distMatch=afterCity.match(/^([^街道镇乡路]+?)(区|县)/);
+  if(distMatch){
+    document.getElementById('district').value=distMatch[1]+distMatch[2];
+    var detail=afterCity.substring(distMatch[0].length).trim();
+    // Remove name from detail
+    var nameParts=t.replace(/1[3-9]\d{9}/g,'').replace(addrText,'').replace(/[\s,，]/g,'').trim();
+    if(nameParts.length>=2&&nameParts.length<=4)detail=detail.replace(nameParts,'').trim();
+    document.getElementById('addr').value=detail;
+  }else{
+    document.getElementById('addr').value=afterCity.trim();
+  }
+}else{
+  document.getElementById('province').value=provMatch+(provMatch.length<=3&&provMatch.indexOf('省')===-1?'省':'');
+  var afterProv=addrText.substring(provMatch.length).replace(/省/,'');
+  var cityMatch=afterProv.match(/^([^市区县]+?)(市|自治州)/);
+  if(cityMatch){
+    document.getElementById('city').value=cityMatch[1]+cityMatch[2];
+    var afterCity=afterProv.substring(cityMatch[0].length);
+    var distMatch=afterCity.match(/^([^街道镇乡路]+?)(区|县|市)/);
+    if(distMatch){
+      document.getElementById('district').value=distMatch[1]+distMatch[2];
+      var detail=afterCity.substring(distMatch[0].length).trim();
+      var nameParts=t.replace(/1[3-9]\d{9}/g,'').replace(addrText,'').replace(/[\s,，]/g,'').trim();
+      if(nameParts.length>=2&&nameParts.length<=4)detail=detail.replace(nameParts,'').trim();
+      document.getElementById('addr').value=detail;
+    }else{document.getElementById('addr').value=afterCity.trim()}
+  }else{document.getElementById('addr').value=afterProv.trim()}
+}
+}
+// Name extraction - improved: split raw input by spaces/commas, find short Chinese segments not in address
+var addrFull=(document.getElementById('province').value+document.getElementById('city').value+document.getElementById('district').value+document.getElementById('addr').value);
+var rawInput=document.getElementById('ai-input').value.trim();
+var segments=rawInput.replace(/1[3-9]\d{9}/g,'').split(/[\s,，\n]+/).filter(function(s){return s.length>=2&&s.length<=4&&/^[一-鿿]+$/.test(s)});
+var foundName='';
+for(var si=0;si<segments.length;si++){
+  var seg=segments[si];
+  if(addrFull.indexOf(seg)===-1&&!/省|市|区|县|街|道|路|号|院|园|幢|室|楼|栋|村|镇|乡|局|站|厂|公司|大厦|广场|科技/.test(seg)){
+    foundName=seg;break;
+  }
+}
+if(foundName)document.getElementById('name').value=foundName;
+}
+
+function order(){var n=document.getElementById('name').value.trim(),p=document.getElementById('phone').value.trim(),prov=document.getElementById('province').value.trim(),city=document.getElementById('city').value.trim(),dist=document.getElementById('district').value.trim(),a=document.getElementById('addr').value.trim(),s=document.querySelector('.sz.on');if(!n||!p||!a){alert('请填写完整信息（姓名、手机、地址）');return}
+var fullAddr=prov+city+dist+a;
+var sz=s?s.textContent:'L',cl=document.getElementById('color').value,qt=document.getElementById('qty').value,nt=document.getElementById('note').value,tm=new Date().toLocaleString('zh-CN');
+var fabNames={'standard':'经典舒适款(¥69)','xinjiang':'新疆棉厚实款(¥79)','eco':'环保再生款(¥89)'};
+var fabPrices={'standard':69,'xinjiang':79,'eco':89};
+var fab=window._selectedFab||'standard';
+var fabName=fabNames[fab];
+var unitPrice=fabPrices[fab];
+var totalPrice=unitPrice*parseInt(qt);
+var sm='SuperMe T恤预订\n姓名:'+n+'\n手机:'+p+'\n尺码:'+sz+'\n颜色:'+cl+'\n面料:'+fabName+'\n数量:'+qt+'\n单价:¥'+unitPrice+'\n总价:¥'+totalPrice+'\n地址:'+fullAddr+(nt?'\n备注:'+nt:'');
+var id='SM'+Date.now().toString(36).toUpperCase();
+var os=JSON.parse(localStorage.getItem('so')||'[]');os.push({n,p,province:prov,city:city,district:dist,addr:a,sz,cl,fab:fabName,qt,nt,tm});localStorage.setItem('so',JSON.stringify(os));
+document.getElementById('order-result').innerHTML='<div style="margin-top:20px;padding:20px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-radius:14px"><p style="color:#34d399;font-weight:700;font-size:15px;margin-bottom:12px">✓ 预订成功</p><p style="color:rgba(255,255,255,.5);font-size:13px;line-height:2;white-space:pre-wrap">订单号: '+id+'\n'+n+' / '+sz+' / '+cl+'\n面料: '+fabName+'\n'+qt+'件 × ¥'+unitPrice+' = ¥'+totalPrice+'\n'+fullAddr+'</p><div style="margin-top:16px;padding:14px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:10px"><p style="font-size:12px;color:var(--amber);font-weight:600;margin-bottom:10px">最后一个问题：你为什么买这件T恤？</p><div style="display:flex;flex-direction:column;gap:6px" id="why-btns"><div class="why-opt" onclick="pickWhy(this,\'认同布斯的故事和知识\')">认同布斯的故事和知识</div><div class="why-opt" onclick="pickWhy(this,\'产品本身值得买\')">产品本身值得买（工艺/面料/设计）</div><div class="why-opt" onclick="pickWhy(this,\'记录自己的AI成长\')">记录自己的AI成长</div><div class="why-opt" onclick="pickWhy(this,\'送朋友/同事\')">送朋友/同事</div><div class="why-opt" onclick="pickWhy(this,\'支持社群\')">支持SuperMe社群</div><div class="why-opt" onclick="pickWhy(this,\'环保公益\')">为环保公益买单</div></div></div><div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><a href="mailto:busi.lb@alibaba-inc.com?subject='+encodeURIComponent('SuperMe预订-'+n)+'" style="flex:1;min-width:120px;text-align:center;padding:11px;border-radius:10px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18);color:#38bdf8;font-size:12px;font-weight:600">邮件确认</a><a href="dingtalk://dingtalkclient/action/sendmsg?content='+encodeURIComponent(sm)+'" style="flex:1;min-width:120px;text-align:center;padding:11px;border-radius:10px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.18);color:#34d399;font-size:12px;font-weight:600">钉钉发送</a></div><p style="color:rgba(255,255,255,.18);font-size:10px;margin-top:12px">请截图保存 · 扫码付款后我们尽快确认</p></div>';
+document.getElementById('order-result').scrollIntoView({behavior:'smooth',block:'center'});['name','phone','province','city','district','addr','note'].forEach(function(i){document.getElementById(i).value=''})}
+
+// Aha Moment
+var defaultAhas=[
+{t:'第一次用AI帮我写完周报，10分钟搞定了以前3小时的活。我愣了一下，然后把省下来的时间用来想——还有哪些事也能这样？',n:'社群成员',l:12},
+{t:'我是一个运营，从来没写过代码。用AI搭出第一个网页的那个下午，我截图发给老婆看，她说你什么时候学的编程。我说我没学，是AI帮我写的。',n:'布斯',l:23},
+{t:'给60岁的奶奶演示AI声音克隆，用我女儿的声音跟她打招呼。全场先安静了两秒，然后笑声一片。那一刻我知道AI不只是工具。',n:'布斯',l:18},
+{t:'以前等开发排期要两周，现在自己用AI一天搞定。不是AI替代了开发，是AI让我不用再等了。',n:'匿名',l:9},
+];
+function loadAhas(){var a=JSON.parse(localStorage.getItem('sa')||'null')||defaultAhas;renderAhas(a)}
+function renderAhas(a){a.sort(function(x,y){return y.l-x.l});document.getElementById('aha-list').innerHTML=a.map(function(i){return'<div class="aha-card"><div class="at">'+i.t+'</div><div class="am">— '+i.n+'<span class="al" onclick="likeAha(\''+i.t.substring(0,20).replace(/'/g,"\\'")+'\')"> ❤ '+i.l+'</span></div></div>'}).join('')}
+function addAha(){var t=document.getElementById('aha-text').value.trim(),n=document.getElementById('aha-name').value.trim()||'匿名';if(!t){alert('写下你的Aha Moment');return}var a=JSON.parse(localStorage.getItem('sa')||'null')||defaultAhas;a.push({t:t,n:n,l:1});localStorage.setItem('sa',JSON.stringify(a));renderAhas(a);document.getElementById('aha-text').value='';document.getElementById('aha-name').value=''}
+function likeAha(prefix){var a=JSON.parse(localStorage.getItem('sa')||'null')||defaultAhas;var found=a.find(function(i){return i.t.substring(0,20)===prefix});if(found)found.l++;localStorage.setItem('sa',JSON.stringify(a));renderAhas(a)}
+loadAhas();
+
+// Wish wall
+var defaultWishes=[{t:'极简黑T恤',c:23},{t:'AI手机壳',c:18},{t:'定制充电宝',c:12},{t:'布大爷玩偶',c:9},{t:'棒球帽',c:7},{t:'马克杯',c:6},{t:'贴纸套装',c:5},{t:'帆布袋',c:4}];
+function loadWishes(){var w=JSON.parse(localStorage.getItem('sw')||'null')||defaultWishes;renderWishes(w)}
+function renderWishes(w){w.sort(function(a,b){return b.c-a.c});document.getElementById('wish-tags').innerHTML=w.map(function(i){return'<div class="wtag" onclick="voteWish(this,\''+i.t.replace(/'/g,"\\'")+'\')">'+i.t+'<span class="wc">'+i.c+'票</span></div>'}).join('')}
+function addWish(){var t=document.getElementById('wish-text').value.trim();if(!t)return;var w=JSON.parse(localStorage.getItem('sw')||'null')||defaultWishes;var found=w.find(function(i){return i.t===t});if(found){found.c++}else{w.push({t:t,c:1})}localStorage.setItem('sw',JSON.stringify(w));renderWishes(w);document.getElementById('wish-text').value=''}
+function voteWish(el,t){var w=JSON.parse(localStorage.getItem('sw')||'null')||defaultWishes;var found=w.find(function(i){return i.t===t});if(found)found.c++;localStorage.setItem('sw',JSON.stringify(w));renderWishes(w)}
+loadWishes();
+
+// Vote restore
+var sv=localStorage.getItem('sv');if(sv){document.querySelectorAll('.vt').forEach(c=>{var t=c.querySelector('.vl').textContent;if((sv==='white'&&t.includes('白'))||(sv==='black'&&t.includes('黑'))||(sv==='orange'&&t.includes('橙'))||(sv==='green'&&t.includes('绿')))c.classList.add('voted')})}
+
+// Bulk order
+function downloadTemplate(){
+var csv='﻿姓名,手机号,尺码(S/M/L/XL/2XL/3XL),颜色(经典白/极简黑),数量,省,市,区县,详细地址,备注\n张三,13812345678,L,经典白,1,浙江省,杭州市,余杭区,仓前街道xx小区xx幢,\n李四,13987654321,XL,经典白,2,广东省,深圳市,南山区,科技园xx路xx号,团购\n';
+var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SuperMe团购模板.csv';a.click()}
+
+function uploadBulk(input){
+var file=input.files[0];if(!file)return;var reader=new FileReader();
+reader.onload=function(e){var text=e.target.result;var lines=text.split('\n').filter(function(l){return l.trim()});if(lines.length<2){alert('文件为空或格式不正确');return}var orders=[];
+for(var i=1;i<lines.length;i++){var cols=lines[i].split(',');if(cols.length<5)continue;orders.push({name:cols[0],phone:cols[1],size:cols[2],color:cols[3],qty:cols[4],province:cols[5]||'',city:cols[6]||'',district:cols[7]||'',addr:cols[8]||'',note:cols[9]||''})}
+if(orders.length===0){alert('未解析到有效订单');return}var existing=JSON.parse(localStorage.getItem('so')||'[]');var tm=new Date().toLocaleString('zh-CN');orders.forEach(function(o){o.tm=tm;o.bulk=true;existing.push(o)});localStorage.setItem('so',JSON.stringify(existing));
+var summary=orders.map(function(o,i){return(i+1)+'. '+o.name+' / '+o.size+' / '+o.color+' × '+o.qty}).join('\n');
+document.getElementById('bulk-result').innerHTML='<div style="margin-top:14px;padding:16px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-radius:12px;text-align:left"><p style="color:#34d399;font-weight:700;font-size:14px;margin-bottom:8px">✓ 团购解析成功 · '+orders.length+'条订单</p><pre style="color:rgba(255,255,255,.45);font-size:12px;line-height:1.8;white-space:pre-wrap;font-family:inherit">'+summary+'</pre><p style="color:rgba(255,255,255,.18);font-size:10px;margin-top:10px">请截图保存 · 扫码付款总额¥'+(orders.reduce(function(s,o){return s+parseInt(o.qty||1)},0)*69)+'后联系布斯确认</p></div>'};
+reader.readAsText(file,'UTF-8');input.value=''}
+
+// Why buy survey
+function pickWhy(el,reason){
+document.querySelectorAll('.why-opt').forEach(function(o){o.classList.remove('picked')});
+el.classList.add('picked');
+var whys=JSON.parse(localStorage.getItem('swhys')||'{}');
+whys[reason]=(whys[reason]||0)+1;
+localStorage.setItem('swhys',JSON.stringify(whys));
+el.parentElement.innerHTML='<p style="color:#34d399;font-size:12px;text-align:center;padding:8px">谢谢你的反馈！你选择了：'+reason+'</p>';
+}
+
+// Creator platform
+function crTab(n){document.querySelectorAll('.cr-tab').forEach(function(t,i){t.classList.toggle('active',i===n)});document.querySelectorAll('.cr-panel').forEach(function(p,i){p.classList.toggle('active',i===n)})}
+
+function genPrompt(){
+var theme=document.getElementById('design-theme').value.trim();
+if(!theme){alert('请输入设计主题');return}
+var style=document.getElementById('design-style').value;
+var color=document.getElementById('design-color').value;
+var extra=document.getElementById('design-extra').value.trim();
+var colorMap={'白色底':'white','黑色底':'black','灰色底':'heather gray','都可以':'white'};
+var bgColor=colorMap[color]||'white';
+
+var styleKey={
+'极简文字款（类似Supreme）':'minimalist-text',
+'插画图案款（背面大图）':'illustration',
+'代码/技术款（代码片段）':'code-tech',
+'口号标语款（一句话）':'slogan',
+'抽象艺术款（几何/渐变）':'abstract'
+};
+var sk=styleKey[style]||'minimalist-text';
+
+var styleGuide={
+'minimalist-text':'Style: Minimalist typography. Front: one bold word or short phrase centered on chest, clean sans-serif font. Back: blank or small tagline at neck.',
+'illustration':'Style: Creative illustration. Front: small logo/icon on left chest. Back: large detailed artwork covering 60% of back area.',
+'code-tech':'Style: Developer aesthetic. Front: small terminal prompt icon on chest. Back: code snippet in monospace font, dark syntax-highlight colors on fabric.',
+'slogan':'Style: Statement design. Front: large bold sentence across chest, impact typography. Back: smaller supporting text or blank.',
+'abstract':'Style: Abstract art. Front: geometric shapes or gradient composition across full front. Back: complementary abstract pattern. No text.'
+};
+
+var prompt='Create a complete T-shirt design suite for brand "SuperMe". Theme: '+theme+'. '+bgColor+' base color.'+( extra?' Note: '+extra+'':'')+'\n\n'+styleGuide[sk]+'\n\nGenerate a 2x3 grid composite image showing 6 views:\n\n[Row 1, Left] FRONT VIEW: Full T-shirt front on '+bgColor+' fabric, flat lay mockup. Show the main design clearly.\n\n[Row 1, Center] BACK VIEW: Full T-shirt back, same mockup style. Show back design or clean back.\n\n[Row 1, Right] DETAIL CLOSE-UP: Zoom into the key design element (embroidery/print texture/graphic detail) showing craft quality.\n\n[Row 2, Left] PACKAGING: The T-shirt neatly folded in a kraft paper box with tissue paper, a thank-you card reading "这不是一件T恤 是一个故事的开始", and a round SuperMe sticker. Premium unboxing flat lay.\n\n[Row 2, Center] LOGO/TAG: Close-up of the inside collar showing "Be Super Be Me" print, and a woven sleeve label. Clean detail shot.\n\n[Row 2, Right] LIFESTYLE: The T-shirt worn by a person (back view, casual pose) in natural daylight, street photography style.\n\nOverall: photo-realistic product photography, consistent lighting across all 6 panels, professional e-commerce quality. Each panel cleanly separated. Total image should be landscape 3:2 ratio.';
+
+if(prompt.length>2000){prompt=prompt.substring(0,1997)+'...';}
+
+document.getElementById('prompt-result').innerHTML='<div class="prompt-box" style="margin-top:16px"><button class="copy-btn" onclick="copyPrompt(this)">复制</button><pre>'+prompt+'</pre></div><p style="font-size:11px;color:var(--txt3);margin-top:8px;text-align:center">'+prompt.length+' 字符 · 复制后去 <a href="https://done.alibaba-inc.com/done-ai/done-agent/home" target="_blank">Done</a> / Midjourney / ChatGPT 生成完整设计套件</p><div style="margin-top:12px;padding:12px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:10px"><p style="font-size:11px;color:var(--amber);font-weight:600;margin-bottom:6px">生成后你会得到6张图：</p><p style="font-size:11px;color:var(--txt3);line-height:1.8">① 正面设计 ② 背面设计 ③ 细节特写 ④ 包装效果 ⑤ Logo/标签 ⑥ 穿着效果</p></div>';
+}
+function copyPrompt(btn){var text=btn.parentElement.querySelector('pre').textContent;navigator.clipboard.writeText(text).then(function(){btn.textContent='已复制';setTimeout(function(){btn.textContent='复制'},2000)})}
+
+function previewUpload(input){
+var file=input.files[0];if(!file)return;
+var reader=new FileReader();reader.onload=function(e){
+var img=new Image();img.onload=function(){
+var canvas=document.createElement('canvas');
+var maxW=600,maxH=600;
+var w=img.width,h=img.height;
+if(w>maxW||h>maxH){var ratio=Math.min(maxW/w,maxH/h);w=Math.round(w*ratio);h=Math.round(h*ratio)}
+canvas.width=w;canvas.height=h;
+canvas.getContext('2d').drawImage(img,0,0,w,h);
+// Adaptive quality to stay under 500KB
+var quality=0.8;
+var compressed=canvas.toDataURL('image/jpeg',quality);
+while(compressed.length>680000&&quality>0.2){quality-=0.1;compressed=canvas.toDataURL('image/jpeg',quality)}
+input.dataset.compressed=compressed;
+var sizeKB=Math.round(compressed.length*0.75/1024);
+document.getElementById('up-preview').innerHTML='<img src="'+compressed+'" style="max-width:200px;max-height:200px;border-radius:10px;margin:0 auto"><p style="font-size:10px;color:var(--txt3);margin-top:6px;text-align:center">已压缩至 '+sizeKB+'KB · '+w+'×'+h+'px</p>';
+};img.src=e.target.result;
+};reader.readAsDataURL(file)}
+
+function submitDesign(){
+var name=document.getElementById('up-name').value.trim();
+var title=document.getElementById('up-title').value.trim();
+var fileInput=document.getElementById('up-file');
+var file=fileInput.files[0];
+if(!name||!title){alert('请填写设计师名字和设计名称');return}
+if(!file){alert('请上传设计图');return}
+var compressed=fileInput.dataset.compressed;
+if(!compressed){alert('图片还在处理中，请稍等');return}
+try{
+var designs=JSON.parse(localStorage.getItem('sd')||'null')||defaultDesigns.slice();
+designs.push({name:name,title:title,img:compressed,votes:0,preorders:0,goal:CROWD_GOAL,time:new Date().toLocaleString('zh-CN')});
+localStorage.setItem('sd',JSON.stringify(designs));
+renderDesigns(designs);
+document.getElementById('up-result').innerHTML='<p style="color:#34d399;font-size:13px;margin-top:12px;text-align:center">✓ 设计已提交！快去"设计展示"看看吧</p>';
+document.getElementById('up-name').value='';
+document.getElementById('up-title').value='';
+document.getElementById('up-preview').innerHTML='';
+fileInput.value='';
+fileInput.dataset.compressed='';
+crTab(2);
+}catch(e){
+if(e.name==='QuotaExceededError'||e.code===22){
+alert('存储空间已满，请清理浏览器缓存后重试');
+}else{alert('提交失败: '+e.message)}
+}
+}
+
+var defaultDesigns=[
+{name:'布斯',title:'SuperMe经典白',img:'images/design.jpg',votes:45,preorders:45,goal:20,time:'2026-06-10'},
+];
+var CROWD_GOAL=20;
+function loadDesigns(){var d=JSON.parse(localStorage.getItem('sd')||'null')||defaultDesigns.slice();renderDesigns(d)}
+function renderDesigns(d){d.sort(function(a,b){return(b.votes+b.preorders)-(a.votes+a.preorders)});
+document.getElementById('design-gallery').innerHTML=d.map(function(item,i){
+var goal=item.goal||CROWD_GOAL;
+var pre=item.preorders||0;
+var pct=Math.min(100,Math.round(pre/goal*100));
+var statusClass=pre>=goal?'success':'crowding';
+var statusText=pre>=goal?'众筹成功 · 生产中':'众筹中 · 还差'+(goal-pre)+'件';
+return'<div class="gallery-card"><img src="'+item.img+'" alt="'+item.title+'" onclick="sl(this)"><div class="gc-info"><div class="gc-status '+statusClass+'">'+statusText+'</div><div class="gc-name">'+item.title+'</div><div class="gc-designer">by '+item.name+'</div><div class="gc-progress"><div class="gc-progress-bar"><div class="gc-progress-fill" style="width:'+pct+'%"></div></div><div class="gc-progress-text"><span>'+pre+'/'+goal+'件</span><span>'+pct+'%</span></div></div><div class="gc-actions"><button class="gc-vote-btn" onclick="voteDesign('+i+')">♡ '+item.votes+' 喜欢</button><button class="gc-preorder-btn" onclick="preorderDesign('+i+')">预订</button></div></div></div>';
+}).join('')}
+function voteDesign(i){var d=JSON.parse(localStorage.getItem('sd')||'null')||defaultDesigns.slice();if(d[i])d[i].votes++;localStorage.setItem('sd',JSON.stringify(d));renderDesigns(d)}
+function preorderDesign(i){var d=JSON.parse(localStorage.getItem('sd')||'null')||defaultDesigns.slice();if(d[i]){d[i].preorders=(d[i].preorders||0)+1;localStorage.setItem('sd',JSON.stringify(d));renderDesigns(d);var item=d[i];var goal=item.goal||CROWD_GOAL;if(item.preorders>=goal){alert('🎉 '+item.title+' 众筹成功！即将进入生产。')}else{alert('已预订！'+item.title+' 还差'+(goal-item.preorders)+'件达到众筹目标。')}}}
+loadDesigns();
+
+// Live orders infinite scroll
+var lsEl=document.getElementById('live-scroll');
+if(lsEl)lsEl.innerHTML+=lsEl.innerHTML;
+
+// Smooth scroll hint
+document.querySelector('.scroll').addEventListener('click',function(){document.querySelector('.emp').scrollIntoView({behavior:'smooth'})})
+
+
+
+// PDP Quantity
+function pdpQty(d){var inp=document.getElementById('pdp-qty');var v=parseInt(inp.value)||1;v+=d;if(v<1)v=1;if(v>10)v=10;inp.value=v;pdpQtyUpdate()}
+function pdpQtyUpdate(){var v=parseInt(document.getElementById('pdp-qty').value)||1;if(v<1)v=1;if(v>10)v=10;var total=v*69;document.getElementById('pdp-subtotal').textContent='¥'+total;document.getElementById('pdp-buy-price').textContent='¥'+total}
+
+// Checkout modal
+function openCheckout(){
+  var sz=document.querySelector('.sz.on');
+  var size=sz?sz.textContent:'XL';
+  var qty=parseInt(document.getElementById('pdp-qty').value)||1;document.getElementById('co-spec').textContent='经典白 · '+size+' · '+qty+'件';
+  document.getElementById('co-r-size').textContent=size;
+  var total=qty*69;document.getElementById('co-price').textContent='¥'+total;document.getElementById('checkout-overlay').classList.add('show');
+  document.body.style.overflow='hidden';
+  coNext(1);
+}
+function closeCheckout(){
+  document.getElementById('checkout-overlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+function coNext(step){
+  [1,2,3].forEach(function(i){
+    document.getElementById('cs-'+i).classList.toggle('active',i===step);
+    var dot=document.getElementById('sd-'+i);
+    dot.className='checkout-step-dot';
+    if(i<step)dot.classList.add('done');
+    if(i===step)dot.classList.add('current');
+  });
+  if(step===2){
+    var n=document.getElementById('co-name').value.trim();
+    var p=document.getElementById('co-phone').value.trim();
+    if(!n||!p){alert('请填写姓名和手机号');coNext(1);return}
+    document.getElementById('co-r-name').textContent=n;
+    document.getElementById('co-r-phone').textContent=p;
+    var addr=[document.getElementById('co-province').value,document.getElementById('co-city').value,document.getElementById('co-district').value,document.getElementById('co-addr').value].filter(Boolean).join('');
+    document.getElementById('co-r-addr').textContent=addr||'-';
+  }
+}
+function coAiParse(){
+  var t=document.getElementById('co-ai').value.trim();if(!t)return;
+  var phone=t.match(/1[3-9]\d{9}/);if(phone){document.getElementById('co-phone').value=phone[0];t=t.replace(phone[0],'')}
+  var zhixia=['北京','天津','上海','重庆'];
+  var provinces=['河北','山西','辽宁','吉林','黑龙江','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','海南','四川','贵州','云南','陕西','甘肃','青海','内蒙古','广西','西藏','宁夏','新疆'];
+  var prov=null,isZ=false;
+  zhixia.forEach(function(z){if(t.indexOf(z)!==-1){prov=z;isZ=true}});
+  if(!prov)provinces.forEach(function(p){if(t.indexOf(p)!==-1)prov=p});
+  if(prov){
+    if(isZ){document.getElementById('co-province').value=prov+'市';document.getElementById('co-city').value=prov+'市';var a=t.substring(t.indexOf(prov)+prov.length).replace(/市?/,'');var dm=a.match(/^([^街道镇]+?)(区|县)/);if(dm){document.getElementById('co-district').value=dm[1]+dm[2];document.getElementById('co-addr').value=a.substring(dm[0].length).replace(/1[3-9]\d{9}/g,'').trim()}}
+    else{document.getElementById('co-province').value=prov+(prov.length<=3?'省':'');var a=t.substring(t.indexOf(prov)+prov.length).replace(/省/,'');var cm=a.match(/^([^市]+?)(市|自治州)/);if(cm){document.getElementById('co-city').value=cm[1]+cm[2];var a2=a.substring(cm[0].length);var dm=a2.match(/^([^街道镇]+?)(区|县|市)/);if(dm){document.getElementById('co-district').value=dm[1]+dm[2];document.getElementById('co-addr').value=a2.substring(dm[0].length).replace(/1[3-9]\d{9}/g,'').trim()}}}
+  }
+  var segs=document.getElementById('co-ai').value.replace(/1[3-9]\d{9}/g,'').split(/[\s,，]+/).filter(function(s){return/^[\u4e00-\u9fff]{2,4}$/.test(s)&&!/省|市|区|县|街|路|号/.test(s)});
+  if(segs.length>0)document.getElementById('co-name').value=segs[0];
+}
+function coSubmit(){
+  var n=document.getElementById('co-name').value.trim();
+  var p=document.getElementById('co-phone').value.trim();
+  var addr=document.getElementById('co-r-addr').textContent;
+  var sz=document.getElementById('co-r-size').textContent;
+  var nt=document.getElementById('co-note').value;
+  var id='SM'+Date.now().toString(36).toUpperCase();
+  document.getElementById('co-order-info').innerHTML='订单号: '+id+'<br>'+n+' / '+sz+' / 经典白<br>'+addr;
+  coNext(3);
+}
+
+
+// Order query
+function openOrderQuery(){
+  document.getElementById('query-overlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function queryOrder(){
+  var phone=document.getElementById('q-phone').value.trim();
+  if(!phone){alert('请输入手机号');return}
+  var orders=JSON.parse(localStorage.getItem('so')||'[]');
+  var matched=orders.filter(function(o){return o.p===phone||o.phone===phone});
+  if(matched.length===0){
+    document.getElementById('q-result').innerHTML='<div style="padding:16px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;text-align:center"><p style="color:var(--txt2)">未找到该手机号的订单</p><p style="color:var(--txt3);font-size:11px;margin-top:6px">请确认手机号是否正确，或联系布斯查询</p></div>';
+  }else{
+    var html=matched.map(function(o,i){
+      return '<div style="padding:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;margin-bottom:10px"><div style="font-size:13px;color:var(--txt);line-height:1.8"><b>'+(o.n||o.name||'-')+'</b> / '+(o.sz||o.size||'-')+' / '+(o.cl||o.color||'经典白')+'<br><span style="color:var(--txt3)">'+((o.province||'')+(o.city||'')+(o.district||'')+(o.addr||o.a||''))+'</span><br><span style="color:var(--txt3);font-size:11px">'+(o.tm||o.time||'-')+'</span></div><div style="display:flex;gap:8px;margin-top:10px"><span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.12);color:var(--amber)">待确认付款</span><span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--txt3)">未发货</span></div></div>';
+    }).join('');
+    document.getElementById('q-result').innerHTML='<p style="font-size:12px;color:var(--txt3);margin-bottom:10px">找到 '+matched.length+' 条订单</p>'+html+'<p style="font-size:11px;color:var(--txt3);margin-top:8px">付款状态和物流信息由布斯手动更新<br>如需确认请钉钉联系布斯</p>';
+  }
+}
+
+</script>
+
+
+<div class="checkout-overlay" id="checkout-overlay">
+  <div class="checkout-modal">
+    <button class="checkout-close" onclick="closeCheckout()">&times;</button>
+    <div class="checkout-title">确认订单</div>
+    
+    <div class="checkout-product">
+      <img src="images/design.jpg" alt="SuperMe T恤">
+      <div class="checkout-product-info">
+        <h4>SuperMe T恤</h4>
+        <p id="co-spec">经典白 · XL</p>
+      </div>
+      <div class="checkout-product-price" id="co-price">¥69</div>
+    </div>
+
+    <div class="checkout-steps-bar">
+      <div class="checkout-step-dot current" id="sd-1"></div>
+      <div class="checkout-step-dot" id="sd-2"></div>
+      <div class="checkout-step-dot" id="sd-3"></div>
+    </div>
+
+    <!-- Step 1: Address -->
+    <div class="checkout-step active" id="cs-1">
+      <div class="ai-fill" style="margin-bottom:16px">
+        <label>AI 一键填写</label>
+        <textarea id="co-ai" placeholder="粘贴：姓名 手机号 地址" style="min-height:50px"></textarea>
+        <button onclick="coAiParse()">智能解析</button>
+      </div>
+      <div class="fd"><label>姓名</label><input type="text" id="co-name" placeholder="收货人"></div>
+      <div class="fd"><label>手机号</label><input type="tel" id="co-phone" placeholder="手机号"></div>
+      <div class="row2"><div class="fd"><label>省</label><input type="text" id="co-province" placeholder="省"></div><div class="fd"><label>市</label><input type="text" id="co-city" placeholder="市"></div></div>
+      <div class="row2"><div class="fd"><label>区/县</label><input type="text" id="co-district" placeholder="区"></div><div class="fd"><label>邮编</label><input type="text" id="co-zip" placeholder="选填"></div></div>
+      <div class="fd"><label>详细地址</label><textarea id="co-addr" placeholder="街道+楼栋门牌" style="min-height:50px"></textarea></div>
+      <div class="checkout-nav"><button class="btn-next" onclick="coNext(2)">下一步 · 确认订单</button></div>
+    </div>
+
+    <!-- Step 2: Confirm -->
+    <div class="checkout-step" id="cs-2">
+      <div style="padding:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;margin-bottom:16px">
+        <div class="os-row"><span class="os-label">收货人</span><span class="os-value" id="co-r-name">-</span></div>
+        <div class="os-row"><span class="os-label">手机号</span><span class="os-value" id="co-r-phone">-</span></div>
+        <div class="os-row"><span class="os-label">地址</span><span class="os-value" id="co-r-addr" style="max-width:200px;text-align:right">-</span></div>
+        <div class="os-row"><span class="os-label">尺码</span><span class="os-value" style="color:var(--cyan)" id="co-r-size">XL</span></div>
+      </div>
+      <div class="os-row"><span class="os-label">商品金额</span><span class="os-value">¥89</span></div>
+      <div class="os-row"><span class="os-label">预售优惠</span><span class="os-value" style="color:var(--green)">-¥20</span></div>
+      <div class="os-row"><span class="os-label">运费</span><span class="os-value">包邮</span></div>
+      <div class="os-row os-total"><span class="os-label">合计</span><span class="os-value">¥69</span></div>
+      <div class="fd" style="margin-top:12px"><label>备注</label><input type="text" id="co-note" placeholder="选填"></div>
+      <div class="checkout-nav"><button class="btn-back" onclick="coNext(1)">返回修改</button><button class="btn-next" onclick="coSubmit()">提交预订 ¥69</button></div>
+      <div id="co-result"></div>
+    </div>
+
+    <!-- Step 3: Pay -->
+    <div class="checkout-step" id="cs-3">
+      <div style="text-align:center;padding:16px 0">
+        <div style="font-size:36px;margin-bottom:8px">✓</div>
+        <div style="font-size:16px;font-weight:700;color:var(--green);margin-bottom:6px">预订成功</div>
+        <div style="font-size:13px;color:var(--txt2);margin-bottom:12px" id="co-order-info">-</div>
+        <div style="padding:12px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.12);border-radius:10px;text-align:left;font-size:12px;color:var(--txt2);line-height:1.8">
+          <p style="color:var(--amber);font-weight:600;margin-bottom:6px">付款后请确认：</p>
+          1. 扫码付款（备注：姓名+尺码）<br>
+          2. 付款成功后截图<br>
+          3. 钉钉搜索"布斯"发送截图确认<br>
+          <p style="color:var(--txt3);margin-top:6px;font-size:11px">确认后我们会更新订单状态并安排发货</p>
+        </div>
+      </div>
+      <div class="pay-box" style="margin-top:16px">
+        <div class="pay-title">扫码付款 · ¥69</div>
+        <div class="pay-qr-grid"><div class="pay-qr-item"><div class="pay-qr-frame"><img src="images/pay-qr.jpg" alt="支付宝"></div><div class="pay-label">支付宝</div></div><div class="pay-qr-item"><div class="pay-qr-frame"><img src="images/wechat-qr.jpg" alt="微信支付"></div><div class="pay-label">微信支付</div></div></div>
+        <div class="pay-note">付款备注：姓名+尺码<br>1-2周发货 · 发货后通知快递单号</div>
+      </div>
+      <div class="checkout-nav" style="margin-top:16px"><button class="btn-next" onclick="closeCheckout()" style="background:var(--card);border:1px solid var(--line);color:var(--txt2)">完成</button></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="query-overlay" id="query-overlay">
+  <div class="query-modal">
+    <button class="checkout-close" onclick="document.getElementById('query-overlay').classList.remove('show');document.body.style.overflow=''">&times;</button>
+    <div class="checkout-title">查询我的订单</div>
+    <div class="fd"><label>手机号</label><input type="tel" id="q-phone" placeholder="输入下单时的手机号"></div>
+    <button class="cta" onclick="queryOrder()" style="margin-top:10px">查询</button>
+    <div id="q-result" style="margin-top:16px"></div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -486,6 +486,55 @@ a{color:var(--cyan);text-decoration:none}
 .query-overlay.show{display:flex;justify-content:center;align-items:flex-start}
 .query-modal{background:#151921;border:1px solid rgba(255,255,255,.08);border-radius:20px;width:100%;max-width:420px;margin:60px auto;padding:28px 24px;position:relative}
 
+/* ====== PPT MODE ====== */
+.ppt-overlay{display:none;position:fixed;inset:0;z-index:1000;background:#0a0c12}
+.ppt-overlay.show{display:flex;flex-direction:column}
+.ppt-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(15,17,23,.95);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.ppt-brand{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:2px}
+.ppt-progress-wrap{flex:1;max-width:400px;margin:0 24px;display:flex;align-items:center;gap:8px}
+.ppt-progress-bar{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.ppt-progress-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:2px;transition:width .4s}
+.ppt-page{font-size:11px;color:rgba(255,255,255,.35);white-space:nowrap}
+.ppt-close{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
+.ppt-close:hover{border-color:var(--cyan);color:#fff}
+.ppt-stage{flex:1;position:relative;overflow:hidden}
+.ppt-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px 32px;opacity:0;transform:translateX(60px);transition:opacity .5s,transform .5s;pointer-events:none}
+.ppt-slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.ppt-slide.exit-left{opacity:0;transform:translateX(-60px)}
+.ppt-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.12);padding:4px 16px;border-radius:14px;margin-bottom:20px}
+.ppt-slide h2{font-size:clamp(28px,7vw,56px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px;letter-spacing:-1px;max-width:720px}
+.ppt-slide h2 em{font-style:normal;background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ppt-slide .ppt-body{font-size:clamp(15px,2.5vw,20px);color:rgba(255,255,255,.6);line-height:1.9;max-width:600px;margin-bottom:24px}
+.ppt-slide .ppt-highlight{font-size:clamp(18px,4vw,32px);color:rgba(255,255,255,.8);font-weight:600;line-height:1.6;max-width:640px;margin-bottom:24px}
+.ppt-slide .ppt-img{width:min(280px,50vw);border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.5);margin-bottom:20px}
+.ppt-slide .ppt-number{font-size:clamp(72px,18vw,120px);font-weight:900;background:linear-gradient(135deg,rgba(96,165,250,.15),rgba(74,222,128,.1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:-10px}
+.ppt-nav-arrows{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:10}
+.ppt-arrow{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(8px)}
+.ppt-arrow:hover{border-color:var(--cyan);color:#fff;background:rgba(96,165,250,.1)}
+.ppt-arrow:disabled{opacity:.2;cursor:default}
+.ppt-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:10px;color:rgba(255,255,255,.2);letter-spacing:1px}
+.ppt-cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.ppt-cta-btn{padding:14px 32px;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;border:none;letter-spacing:.5px}
+.ppt-cta-btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#001}
+.ppt-cta-btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(56,189,248,.3)}
+.ppt-cta-btn.secondary{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);color:var(--amber)}
+.ppt-cta-btn.secondary:hover{background:rgba(251,191,36,.15)}
+.ppt-qr-row{display:flex;gap:20px;justify-content:center;margin-top:20px}
+.ppt-qr-item{text-align:center}
+.ppt-qr-item img{width:120px;height:120px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#fff;padding:6px;object-fit:contain}
+.ppt-qr-label{font-size:11px;color:var(--txt3);margin-top:6px}
+@media(max-width:768px){
+  .ppt-slide{padding:32px 20px}
+  .ppt-slide h2{font-size:28px}
+  .ppt-slide .ppt-body{font-size:15px}
+  .ppt-slide .ppt-highlight{font-size:18px}
+  .ppt-slide .ppt-img{width:min(200px,60vw)}
+  .ppt-nav-arrows{bottom:20px}
+  .ppt-arrow{width:40px;height:40px;font-size:16px}
+  .ppt-qr-item img{width:100px;height:100px}
+  .ppt-topbar{padding:8px 16px}
+}
+
 </style>
 </head>
 <body>
@@ -508,7 +557,8 @@ a{color:var(--cyan);text-decoration:none}
   <a href="#story">故事</a>
   <a href="#product">产品</a>
   <a href="#size">尺码</a>
-  <a href="#creator" class="nav-highlight">我要设计</a>
+  <a href="#" onclick="openPPT();return false" class="nav-highlight" style="color:var(--green);border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.08)">PPT演示</a>
+  <a href="#creator">我要设计</a>
   <a href="#" onclick="openOrderQuery();return false">查订单</a>
   <a href="#community">共创</a>
 </nav>
@@ -1263,6 +1313,16 @@ function queryOrder(){
   }
 }
 
+// PPT Mode
+var pptCur=0;
+var pptSlides=null;
+function getPptSlides(){if(!pptSlides)pptSlides=document.querySelectorAll('#ppt-stage .ppt-slide');return pptSlides}
+function openPPT(){pptCur=0;document.getElementById('ppt-overlay').classList.add('show');document.body.style.overflow='hidden';pptUpdate()}
+function closePPT(){document.getElementById('ppt-overlay').classList.remove('show');document.body.style.overflow=''}
+function pptNav(d){var slides=getPptSlides();var next=pptCur+d;if(next<0||next>=slides.length)return;slides[pptCur].classList.remove('active');slides[pptCur].classList.add(d>0?'exit-left':'');setTimeout(function(){slides[pptCur-d].classList.remove('exit-left')},500);pptCur=next;pptUpdate()}
+function pptUpdate(){var slides=getPptSlides();slides.forEach(function(s,i){s.classList.remove('active','exit-left');if(i===pptCur)s.classList.add('active')});var total=slides.length;document.getElementById('ppt-progress').style.width=((pptCur+1)/total*100)+'%';document.getElementById('ppt-page').textContent=(pptCur+1)+' / '+total;document.getElementById('ppt-prev').disabled=pptCur===0;document.getElementById('ppt-next').disabled=pptCur===total-1}
+document.addEventListener('keydown',function(e){if(!document.getElementById('ppt-overlay').classList.contains('show'))return;if(e.key==='ArrowRight'||e.key===' ')pptNav(1);else if(e.key==='ArrowLeft')pptNav(-1);else if(e.key==='Escape')closePPT()});
+
 </script>
 
 
@@ -1357,6 +1417,126 @@ function queryOrder(){
     <button class="cta" onclick="queryOrder()" style="margin-top:10px">查询</button>
     <div id="q-result" style="margin-top:16px"></div>
   </div>
+</div>
+
+<!-- ====== PPT MODE ====== -->
+<div class="ppt-overlay" id="ppt-overlay">
+  <div class="ppt-topbar">
+    <div class="ppt-brand">SUPERME</div>
+    <div class="ppt-progress-wrap">
+      <div class="ppt-progress-bar"><div class="ppt-progress-fill" id="ppt-progress" style="width:0%"></div></div>
+      <div class="ppt-page" id="ppt-page">1 / 12</div>
+    </div>
+    <button class="ppt-close" onclick="closePPT()">&times;</button>
+  </div>
+  <div class="ppt-stage" id="ppt-stage">
+
+    <!-- Slide 1: Title -->
+    <div class="ppt-slide active">
+      <div class="ppt-tag">SuperMe · AI Native · 2026</div>
+      <h2>Be Super<br>Be <em>Me</em></h2>
+      <div class="ppt-body">不是一个人的故事<br>是AI Native一代人的成长纪念</div>
+      <img class="ppt-img" src="images/design.jpg" alt="SuperMe T恤">
+    </div>
+
+    <!-- Slide 2: The Challenge -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">起点</div>
+      <h2>&ldquo;你还不是<em>超级个体</em>&rdquo;</h2>
+      <div class="ppt-body">有人这样对布斯说。<br>他是一个运营，不会写代码。<br>那一天他没有反驳，只是记住了这句话。</div>
+    </div>
+
+    <!-- Slide 3: Awakening -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">顿悟</div>
+      <h2>比昨天多赚一分钱<br>你就是<em>超级个体</em></h2>
+      <div class="ppt-body">超级个体不是和别人比，<br>是和昨天的自己比。<br>Be Super Be Me，就是从这里来的。</div>
+    </div>
+
+    <!-- Slide 4: Learning Journey -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">学</div>
+      <h2>从豆包到<em>赛场车手</em></h2>
+      <div class="ppt-body">不会代码也能学AI。<br>从对话开始，一步步解锁生图、PPT、声音克隆。<br>从考驾照走到赛场车手。</div>
+    </div>
+
+    <!-- Slide 5: Using AI -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">用</div>
+      <h2>从等排期到<em>自己搞定</em></h2>
+      <div class="ppt-body">群聊自动分析、智能答疑、自动周报。<br>8小时零代码搭了社群官网。<br>800+人的SuperMe社群不是规划出来的，<br>是走着走着就到了一起。</div>
+    </div>
+
+    <!-- Slide 6: Teaching -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">教</div>
+      <h2>走进社区<br>走上<em>讲台</em></h2>
+      <div class="ppt-body">给小朋友做AI启蒙，给60岁奶奶教用AI拍牙看病。<br>5场公益活动后，走出阿里，<br>在良仓给企业家做了首次对外分享。</div>
+    </div>
+
+    <!-- Slide 7: Co-creation -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">共创</div>
+      <h2>AI读了<em>800人</em>的<br>聊天记录</h2>
+      <div class="ppt-body">让Devix分析社群风格，生成设计prompt。<br>用画眉打样十几稿，发到群里投票。<br>不是一个人的审美，是800+人共创的结果。</div>
+    </div>
+
+    <!-- Slide 8: Overcoming -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">踩坑</div>
+      <h2>AI搞得定设计<br><em>搞不定</em>供应链</h2>
+      <div class="ppt-body">1688找不到、闲鱼也不行。<br>最后靠朋友冬生——他之前做史努比童装，<br>东莞工厂一个电话接单。<br>关键时刻靠的是身边的人。</div>
+    </div>
+
+    <!-- Slide 9: The Moment -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">亮相</div>
+      <h2>穿上它<br>站在<em>台上</em></h2>
+      <div class="ppt-body">6月10日，良仓。<br>穿着这件T恤站在台上的那一刻，<br>从"你还不是超级个体"到"Be Super Be Me"——<br>每一步都穿在了身上。</div>
+      <img class="ppt-img" src="images/model.jpg" alt="穿着SuperMe T恤">
+    </div>
+
+    <!-- Slide 10: Quote -->
+    <div class="ppt-slide">
+      <div class="ppt-highlight">&ldquo;这件T恤不是一个人做出来的。<br>是从800+人的聊天记录里长出来的设计，<br>是朋友一个电话搞定的供应链，<br>是社群投票选出来的款式。<br><br>每一步都有人陪着走。<br>这才是超级个体的真正含义。&rdquo;</div>
+      <div style="color:var(--txt3);font-size:14px">— 布斯</div>
+    </div>
+
+    <!-- Slide 11: Product -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">产品</div>
+      <h2><em>¥69</em> 限时预售</h2>
+      <div class="ppt-body">四种工艺：刺绣+印字+刺绣+织标<br>98%棉+2%氨纶 · 260g中厚 · 宽松版型<br>东莞工厂直发 · 1-2周发货</div>
+      <img class="ppt-img" src="images/flatlay.jpg" alt="产品细节">
+    </div>
+
+    <!-- Slide 12: CTA -->
+    <div class="ppt-slide">
+      <div class="ppt-tag">行动</div>
+      <h2>穿上你的<em>超级个体</em></h2>
+      <div class="ppt-body">扫码下单，或回到网站选尺码购买</div>
+      <div class="ppt-cta-row">
+        <button class="ppt-cta-btn primary" onclick="closePPT();setTimeout(function(){document.getElementById('product').scrollIntoView({behavior:'smooth'})},300)">去选尺码下单</button>
+        <button class="ppt-cta-btn secondary" onclick="closePPT();setTimeout(function(){openCheckout()},300)">直接预订 ¥69</button>
+      </div>
+      <div class="ppt-qr-row">
+        <div class="ppt-qr-item">
+          <img src="images/busi-wechat-qr.jpg" alt="布斯微信">
+          <div class="ppt-qr-label">加布斯微信</div>
+        </div>
+        <div class="ppt-qr-item">
+          <img src="images/wechat-group-qr.jpg" alt="社群">
+          <div class="ppt-qr-label">加入SuperMe社群</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="ppt-nav-arrows">
+    <button class="ppt-arrow" id="ppt-prev" onclick="pptNav(-1)">&larr;</button>
+    <button class="ppt-arrow" id="ppt-next" onclick="pptNav(1)">&rarr;</button>
+  </div>
+  <div class="ppt-hint">← → 键翻页 · ESC 退出</div>
 </div>
 
 </body>

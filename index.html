@@ -1199,8 +1199,44 @@ function coSubmit(){
   var sz=document.getElementById('co-r-size').textContent;
   var nt=document.getElementById('co-note').value;
   var id='SM'+Date.now().toString(36).toUpperCase();
+  var qty=document.getElementById('co-r-qty')?document.getElementById('co-r-qty').textContent:'1';
   document.getElementById('co-order-info').innerHTML='订单号: '+id+'<br>'+n+' / '+sz+' / 经典白<br>'+addr;
+
+  // Save order to localStorage
+  var orders=JSON.parse(localStorage.getItem('so')||'[]');
+  var order={id:id,n:n,p:p,sz:sz,cl:'经典白',qty:parseInt(qty)||1,addr:addr,note:nt,tm:new Date().toLocaleString('zh-CN')};
+  orders.push(order);
+  localStorage.setItem('so',JSON.stringify(orders));
+
+  // Generate formatted order text for clipboard
+  var orderText='【SuperMe T恤订单】\n订单号: '+id+'\n姓名: '+n+'\n手机: '+p+'\n尺码: '+sz+'\n颜色: 经典白\n数量: '+qty+'\n地址: '+addr+(nt?'\n备注: '+nt:'')+'\n时间: '+order.tm;
+  window._lastOrderText=orderText;
+  window._lastOrder=order;
+
+  // Add copy button to the success page
+  setTimeout(function(){
+    var infoEl=document.getElementById('co-order-info');
+    if(infoEl){
+      infoEl.innerHTML+='<div style="display:flex;gap:8px;margin-top:12px;justify-content:center"><button onclick="copyOrder()" style="padding:8px 16px;border-radius:8px;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:#60a5fa;font-size:12px;font-weight:600;cursor:pointer;min-height:36px">复制订单信息</button><a href="dingtalk://dingtalkclient/action/sendmsg?content='+encodeURIComponent(orderText)+'" style="padding:8px 16px;border-radius:8px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);color:#34d399;font-size:12px;font-weight:600;text-decoration:none;min-height:36px;display:flex;align-items:center">发给布斯确认</a></div>';
+    }
+  },100);
+
   coNext(3);
+}
+function copyOrder(){
+  if(window._lastOrderText){
+    navigator.clipboard.writeText(window._lastOrderText).then(function(){
+      alert('订单信息已复制！请发给布斯确认');
+    }).catch(function(){
+      var ta=document.createElement('textarea');
+      ta.value=window._lastOrderText;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      alert('订单信息已复制！');
+    });
+  }
 }
 
 

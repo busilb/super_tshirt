@@ -1319,7 +1319,7 @@ var pptSlides=null;
 function getPptSlides(){if(!pptSlides)pptSlides=document.querySelectorAll('#ppt-stage .ppt-slide');return pptSlides}
 function openPPT(){pptCur=0;document.getElementById('ppt-overlay').classList.add('show');document.body.style.overflow='hidden';pptUpdate()}
 function closePPT(){document.getElementById('ppt-overlay').classList.remove('show');document.body.style.overflow=''}
-function pptNav(d){var slides=getPptSlides();var next=pptCur+d;if(next<0||next>=slides.length)return;slides[pptCur].classList.remove('active');slides[pptCur].classList.add(d>0?'exit-left':'');setTimeout(function(){slides[pptCur-d].classList.remove('exit-left')},500);pptCur=next;pptUpdate()}
+function pptNav(d){var slides=getPptSlides();var next=pptCur+d;if(next<0||next>=slides.length)return;var old=slides[pptCur];old.classList.remove('active');if(d>0)old.classList.add('exit-left');pptCur=next;pptUpdate();setTimeout(function(){old.classList.remove('exit-left')},500)}
 function pptUpdate(){var slides=getPptSlides();slides.forEach(function(s,i){s.classList.remove('active','exit-left');if(i===pptCur)s.classList.add('active')});var total=slides.length;document.getElementById('ppt-progress').style.width=((pptCur+1)/total*100)+'%';document.getElementById('ppt-page').textContent=(pptCur+1)+' / '+total;document.getElementById('ppt-prev').disabled=pptCur===0;document.getElementById('ppt-next').disabled=pptCur===total-1}
 document.addEventListener('keydown',function(e){if(!document.getElementById('ppt-overlay').classList.contains('show'))return;if(e.key==='ArrowRight'||e.key===' ')pptNav(1);else if(e.key==='ArrowLeft')pptNav(-1);else if(e.key==='Escape')closePPT()});
 

@@ -948,9 +948,23 @@ a{color:var(--cyan);text-decoration:none}
 <div class="lb" id="lb" onclick="this.classList.remove('show')"><img id="lbi"></div>
 
 <script>
+var RELAY_URL='https://cdfc69-sandbox-session20ecd80f0af44e8ba9-9001.agent.alibaba-inc.com/notify';
+function notifyDingTalk(d){try{fetch(RELAY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(function(){});}catch(e){}}
+// Auto-sync: upload unsynced localStorage orders to relay on page load
+(function(){try{
+var orders=JSON.parse(localStorage.getItem('so')||'[]');
+if(!orders.length)return;
+var synced=JSON.parse(localStorage.getItem('so_synced')||'[]');
+var toSync=orders.filter(function(o){return synced.indexOf(o.id||o.tm)< 0 && o.p && o.n});
+if(!toSync.length)return;
+toSync.forEach(function(o){
+var d={type:'sync',id:o.id||('SM'+Date.now().toString(36)),n:o.n||o.name||'',p:o.p||o.phone||'',sz:o.sz||o.size||'',cl:o.cl||o.color||'经典白',qty:parseInt(o.qty||o.qt||1),addr:(o.province||'')+(o.city||'')+(o.district||'')+(o.addr||o.a||''),note:o.nt||o.note||'',fab:o.fab||'',tm:o.tm||o.time||''};
+fetch(RELAY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(){synced.push(o.id||o.tm);localStorage.setItem('so_synced',JSON.stringify(synced))}).catch(function(){});
+});
+}catch(e){}})()
 function sl(e){document.getElementById('lbi').src=e.src;document.getElementById('lb').classList.add('show')}
 function pdpThumb(el){document.getElementById('pdp-main').src=el.src;document.querySelectorAll('.pdp-thumbs img').forEach(function(i){i.classList.remove('active')});el.classList.add('active')}
-function ps(e){document.querySelectorAll('.sz').forEach(s=>s.classList.remove('on'));e.classList.add('on');var osSize=document.getElementById('os-size');if(osSize)osSize.textContent=e.textContent}
+function ps(e){e.closest('.szrow').querySelectorAll('.sz').forEach(s=>s.classList.remove('on'));e.classList.add('on');var osSize=document.getElementById('os-size');if(osSize)osSize.textContent=e.textContent}
 function vt(c,k){if(c.classList.contains('voted'))return;document.querySelectorAll('.vt').forEach(v=>v.classList.remove('voted'));c.classList.add('voted');var e=document.getElementById('v-'+k);e.textContent=+e.textContent+1;localStorage.setItem('sv',k)}
 
 window._selectedFab='standard';
@@ -1033,6 +1047,7 @@ var totalPrice=unitPrice*parseInt(qt);
 var sm='SuperMe T恤预订\n姓名:'+n+'\n手机:'+p+'\n尺码:'+sz+'\n颜色:'+cl+'\n面料:'+fabName+'\n数量:'+qt+'\n单价:¥'+unitPrice+'\n总价:¥'+totalPrice+'\n地址:'+fullAddr+(nt?'\n备注:'+nt:'');
 var id='SM'+Date.now().toString(36).toUpperCase();
 var os=JSON.parse(localStorage.getItem('so')||'[]');os.push({n,p,province:prov,city:city,district:dist,addr:a,sz,cl,fab:fabName,qt,nt,tm});localStorage.setItem('so',JSON.stringify(os));
+notifyDingTalk({type:'order',id:id,n:n,p:p,sz:sz,cl:cl,qty:parseInt(qt)||1,fab:fabName,addr:fullAddr,note:nt,tm:tm});
 document.getElementById('order-result').innerHTML='<div style="margin-top:20px;padding:20px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-radius:14px"><p style="color:#34d399;font-weight:700;font-size:15px;margin-bottom:12px">✓ 预订成功</p><p style="color:rgba(255,255,255,.5);font-size:13px;line-height:2;white-space:pre-wrap">订单号: '+id+'\n'+n+' / '+sz+' / '+cl+'\n面料: '+fabName+'\n'+qt+'件 × ¥'+unitPrice+' = ¥'+totalPrice+'\n'+fullAddr+'</p><div style="margin-top:16px;padding:14px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:10px"><p style="font-size:12px;color:var(--amber);font-weight:600;margin-bottom:10px">最后一个问题：你为什么买这件T恤？</p><div style="display:flex;flex-direction:column;gap:6px" id="why-btns"><div class="why-opt" onclick="pickWhy(this,\'认同布斯的故事和知识\')">认同布斯的故事和知识</div><div class="why-opt" onclick="pickWhy(this,\'产品本身值得买\')">产品本身值得买（工艺/面料/设计）</div><div class="why-opt" onclick="pickWhy(this,\'记录自己的AI成长\')">记录自己的AI成长</div><div class="why-opt" onclick="pickWhy(this,\'送朋友/同事\')">送朋友/同事</div><div class="why-opt" onclick="pickWhy(this,\'支持社群\')">支持SuperMe社群</div><div class="why-opt" onclick="pickWhy(this,\'环保公益\')">为环保公益买单</div></div></div><div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><a href="mailto:busi.lb@alibaba-inc.com?subject='+encodeURIComponent('SuperMe预订-'+n)+'" style="flex:1;min-width:120px;text-align:center;padding:11px;border-radius:10px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18);color:#38bdf8;font-size:12px;font-weight:600">邮件确认</a><a href="dingtalk://dingtalkclient/action/sendmsg?content='+encodeURIComponent(sm)+'" style="flex:1;min-width:120px;text-align:center;padding:11px;border-radius:10px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.18);color:#34d399;font-size:12px;font-weight:600">钉钉发送</a></div><p style="color:rgba(255,255,255,.18);font-size:10px;margin-top:12px">请截图保存 · 扫码付款后我们尽快确认</p></div>';
 document.getElementById('order-result').scrollIntoView({behavior:'smooth',block:'center'});['name','phone','province','city','district','addr','note'].forEach(function(i){document.getElementById(i).value=''})}
 
@@ -1070,6 +1085,7 @@ var file=input.files[0];if(!file)return;var reader=new FileReader();
 reader.onload=function(e){var text=e.target.result;var lines=text.split('\n').filter(function(l){return l.trim()});if(lines.length<2){alert('文件为空或格式不正确');return}var orders=[];
 for(var i=1;i<lines.length;i++){var cols=lines[i].split(',');if(cols.length<5)continue;orders.push({name:cols[0],phone:cols[1],size:cols[2],color:cols[3],qty:cols[4],province:cols[5]||'',city:cols[6]||'',district:cols[7]||'',addr:cols[8]||'',note:cols[9]||''})}
 if(orders.length===0){alert('未解析到有效订单');return}var existing=JSON.parse(localStorage.getItem('so')||'[]');var tm=new Date().toLocaleString('zh-CN');orders.forEach(function(o){o.tm=tm;o.bulk=true;existing.push(o)});localStorage.setItem('so',JSON.stringify(existing));
+notifyDingTalk({type:'bulk',count:orders.length,tm:tm});
 var summary=orders.map(function(o,i){return(i+1)+'. '+o.name+' / '+o.size+' / '+o.color+' × '+o.qty}).join('\n');
 document.getElementById('bulk-result').innerHTML='<div style="margin-top:14px;padding:16px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-radius:12px;text-align:left"><p style="color:#34d399;font-weight:700;font-size:14px;margin-bottom:8px">✓ 团购解析成功 · '+orders.length+'条订单</p><pre style="color:rgba(255,255,255,.45);font-size:12px;line-height:1.8;white-space:pre-wrap;font-family:inherit">'+summary+'</pre><p style="color:rgba(255,255,255,.18);font-size:10px;margin-top:10px">请截图保存 · 扫码付款总额¥'+(orders.reduce(function(s,o){return s+parseInt(o.qty||1)},0)*69)+'后联系布斯确认</p></div>'};
 reader.readAsText(file,'UTF-8');input.value=''}
@@ -1262,6 +1278,7 @@ function coSubmit(){
   var order={id:id,n:n,p:p,sz:sz,cl:'经典白',qty:parseInt(qty)||1,addr:addr,note:nt,tm:new Date().toLocaleString('zh-CN')};
   orders.push(order);
   localStorage.setItem('so',JSON.stringify(orders));
+  notifyDingTalk({type:'checkout',id:id,n:n,p:p,sz:sz,cl:'经典白',qty:parseInt(qty)||1,addr:addr,note:nt,tm:order.tm});
 
   // Generate formatted order text for clipboard
   var orderText='【SuperMe T恤订单】\n订单号: '+id+'\n姓名: '+n+'\n手机: '+p+'\n尺码: '+sz+'\n颜色: 经典白\n数量: '+qty+'\n地址: '+addr+(nt?'\n备注: '+nt:'')+'\n时间: '+order.tm;
@@ -1292,6 +1309,18 @@ function copyOrder(){
       alert('订单信息已复制！');
     });
   }
+}
+function copyPayInfo(){
+  var order=window._lastOrder||{};
+  var text='支付宝转账给：斌\n金额：69元\n备注：'+(order.n||'姓名')+'+'+(order.sz||'尺码');
+  navigator.clipboard.writeText(text).then(function(){alert('已复制！打开支付宝→转账→粘贴')}).catch(function(){
+    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('已复制！打开支付宝→转账→粘贴');
+  });
+}
+function notifyPaid(){
+  var order=window._lastOrder||{};
+  notifyDingTalk({type:'paid',id:order.id||'',n:order.n||'',sz:order.sz||'',tm:new Date().toLocaleString('zh-CN')});
+  alert('已通知布斯！请耐心等待确认，1-2周内发货。');
 }
 
 
@@ -1407,20 +1436,45 @@ document.addEventListener('keydown',function(e){if(!document.getElementById('ppt
         <div style="font-size:36px;margin-bottom:8px">✓</div>
         <div style="font-size:16px;font-weight:700;color:var(--green);margin-bottom:6px">预订成功</div>
         <div style="font-size:13px;color:var(--txt2);margin-bottom:12px" id="co-order-info">-</div>
-        <div style="padding:12px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.12);border-radius:10px;text-align:left;font-size:12px;color:var(--txt2);line-height:1.8">
-          <p style="color:var(--amber);font-weight:600;margin-bottom:6px">付款后请确认：</p>
-          1. 扫码付款（备注：姓名+尺码）<br>
-          2. 付款成功后截图<br>
-          3. 钉钉搜索"布斯"发送截图确认<br>
-          <p style="color:var(--txt3);margin-top:6px;font-size:11px">确认后我们会更新订单状态并安排发货</p>
+      </div>
+
+      <div style="padding:16px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:12px;margin-bottom:16px">
+        <div style="font-size:14px;font-weight:700;color:var(--green);text-align:center;margin-bottom:12px">📱 手机支付指引</div>
+        <a href="https://qr.alipay.com/fkx108868jozi6ufaz9v9a3" target="_blank" style="display:block;width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,#1677ff,#4096ff);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;margin-bottom:12px;box-shadow:0 4px 16px rgba(22,119,255,.3)">打开支付宝付款 ¥69</a>
+        <div style="font-size:11px;color:var(--txt3);text-align:center;margin-bottom:12px">手机点击上方按钮直接跳转支付宝 · 电脑用户请扫下方二维码</div>
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <div style="flex:1;padding:12px 8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1);border-radius:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:4px">①</div>
+            <div style="font-size:11px;color:var(--txt2);line-height:1.5">长按下方二维码<br><b style="color:var(--cyan)">保存到相册</b></div>
+          </div>
+          <div style="flex:1;padding:12px 8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1);border-radius:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:4px">②</div>
+            <div style="font-size:11px;color:var(--txt2);line-height:1.5">打开<b style="color:var(--cyan)">支付宝</b><br>点扫一扫</div>
+          </div>
+          <div style="flex:1;padding:12px 8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1);border-radius:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:4px">③</div>
+            <div style="font-size:11px;color:var(--txt2);line-height:1.5">右上角选<br><b style="color:var(--cyan)">相册</b>扫码付</div>
+          </div>
         </div>
+        <button onclick="copyPayInfo()" style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(251,191,36,.3);background:rgba(251,191,36,.08);color:var(--amber);font-size:13px;font-weight:600;cursor:pointer">📋 复制转账信息（支付宝搜索转账）</button>
+        <div style="font-size:10px;color:var(--txt3);text-align:center;margin-top:6px">复制后打开支付宝 → 转账 → 粘贴账号 → 输入金额</div>
       </div>
-      <div class="pay-box" style="margin-top:16px">
-        <div class="pay-title">扫码付款 · ¥69</div>
-        <div class="pay-qr-grid"><div class="pay-qr-item"><div class="pay-qr-frame"><img loading="lazy" decoding="async" src="images/pay-qr.jpg" alt="支付宝"></div><div class="pay-label">支付宝</div></div><div class="pay-qr-item"><div class="pay-qr-frame"><img loading="lazy" decoding="async" src="images/wechat-qr.jpg" alt="微信支付"></div><div class="pay-label">微信支付</div></div></div>
-        <div class="pay-note">付款备注：姓名+尺码<br>1-2周发货 · 发货后通知快递单号</div>
+
+      <div style="text-align:center;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px">
+        <div style="font-size:12px;color:var(--txt3);margin-bottom:10px">长按保存 · 支付宝扫码付款 · ¥69</div>
+        <img src="images/pay-qr.jpg" alt="支付宝收款码" style="width:220px;height:220px;margin:0 auto;border-radius:10px;border:1px solid var(--line)" id="pay-qr-big">
+        <div style="font-size:11px;color:var(--amber);margin-top:8px;font-weight:600">付款备注：姓名+尺码</div>
       </div>
-      <div style="margin-top:20px;padding:16px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.12);border-radius:12px;text-align:center">
+
+      <div style="padding:12px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:10px;text-align:center;margin-bottom:16px">
+        <div style="font-size:12px;color:var(--txt2);line-height:1.8">
+          付款后请<b style="color:var(--amber)">截图</b>发给布斯确认<br>
+          <span style="font-size:11px;color:var(--txt3)">钉钉搜索「布斯」或扫下方微信</span>
+        </div>
+        <button onclick="notifyPaid()" style="margin-top:10px;width:100%;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--green),#059669);color:#fff;font-size:14px;font-weight:700;cursor:pointer">✓ 我已付款</button>
+      </div>
+
+      <div style="padding:16px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.12);border-radius:12px;text-align:center">
         <div style="font-size:14px;font-weight:700;color:var(--cyan);margin-bottom:8px">加入 SuperMe 超能团</div>
         <div style="font-size:12px;color:var(--txt2);margin-bottom:12px;line-height:1.6">扫码加入微信群，获取发货通知、新品预告、社群福利</div>
         <img loading="lazy" decoding="async" src="images/wechat-group-qr.jpg" alt="微信群二维码" style="width:180px;margin:0 auto;border-radius:8px;border:1px solid var(--line)">
